@@ -5,6 +5,7 @@ const nextConfig = {
     loader: 'akamai',
     path: '',
   },
+  basePath: "/kizamu"
 }
 
 module.exports = nextConfig
