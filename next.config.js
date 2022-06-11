@@ -9,7 +9,7 @@ const deployEnvs = {
   VERCEL: {
     basePath: "",
   },
-  GitHub: {
+  GITHUB: {
     basePath: "/kizamu",
   },
 };
