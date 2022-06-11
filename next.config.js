@@ -1,11 +1,28 @@
 /** @type {import('next').NextConfig} */
+
+const { DEPLOY_ENV } = process.env;
+
+const deployEnvs = {
+  DEFAULT: {
+    basePath: "",
+  },
+  VERCEL: {
+    basePath: "",
+  },
+  GitHub: {
+    basePath: "/kizamu",
+  },
+};
+
+const deployEnv = deployEnvs[DEPLOY_ENV || "DEFAULT"]
+
 const nextConfig = {
   reactStrictMode: true,
   images: {
-    loader: 'akamai',
-    path: '',
+    loader: "akamai",
+    path: "",
   },
-  basePath: "/kizamu"
-}
+  basePath: deployEnv.basePath,
+};
 
-module.exports = nextConfig
+module.exports = nextConfig;
