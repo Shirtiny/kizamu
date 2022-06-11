@@ -16,6 +16,8 @@ const deployEnvs = {
 
 const deployEnv = deployEnvs[DEPLOY_ENV || "DEFAULT"]
 
+console.log("Deploy Env: ", deployEnv);
+
 const nextConfig = {
   reactStrictMode: true,
   images: {
