@@ -5,6 +5,8 @@ node_js: "16.14.2"
 cache:
   directories:
     - node_modules
+before_install:
+  - echo "start install"       
 install:
   - yarn
 before_script:
