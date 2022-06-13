@@ -13,7 +13,7 @@ export default function Home() {
 
       <main className={styles.main}>
         <h1 className={styles.title}>
-          Welcome to <a href="">kizamu!</a>
+          Welcome to <a href="https://github.com/Shirtiny/kizamu">kizamu!</a>
         </h1>
 
         <p className={styles.description}>
