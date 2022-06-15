@@ -27,4 +27,4 @@ const nextConfig = {
   basePath: deployEnv.basePath,
 };
 
-module.exports = nextConfig;
+module.exports = nextConfig

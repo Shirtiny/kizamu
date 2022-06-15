@@ -1,25 +1,24 @@
 {
-  "name": "kizamu",
-  "version": "0.1.1",
+  "name": "my-app",
+  "version": "0.1.0",
   "private": true,
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "preexport": "yarn build",
-    "export": "next export",
-    "predeploy": "yarn export",
-    "deploy": "gh-pages -d out",
     "start": "next start",
     "lint": "next lint"
   },
   "dependencies": {
     "next": "12.1.6",
-    "react": "18.1.0",
-    "react-dom": "18.1.0"
+    "react": "18.2.0",
+    "react-dom": "18.2.0"
   },
   "devDependencies": {
+    "@types/node": "17.0.43",
+    "@types/react": "18.0.12",
+    "@types/react-dom": "18.0.5",
     "eslint": "8.17.0",
     "eslint-config-next": "12.1.6",
-    "gh-pages": "^4.0.0"
+    "typescript": "4.7.3"
   }
 }

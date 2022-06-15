@@ -1,8 +1,9 @@
+import type { NextPage } from 'next'
 import Head from 'next/head'
 import Image from 'next/image'
 import styles from '../styles/Home.module.css'
 
-export default function Home() {
+const Home: NextPage = () => {
   return (
     <div className={styles.container}>
       <Head>
@@ -13,12 +14,12 @@ export default function Home() {
 
       <main className={styles.main}>
         <h1 className={styles.title}>
-          Welcome to <a href="https://github.com/Shirtiny/kizamu">kizamu!</a>
+          Welcome to <a href="https://nextjs.org">Kizamu!</a>
         </h1>
 
         <p className={styles.description}>
           Get started by editing{' '}
-          <code className={styles.code}>pages/index.js</code>
+          <code className={styles.code}>pages/index.tsx</code>
         </p>
 
         <div className={styles.grid}>
@@ -60,10 +61,12 @@ export default function Home() {
         >
           Powered by{' '}
           <span className={styles.logo}>
-            <Image src="/logo.png" alt="Kizamu Logo" width={72} height={16} />
+            <Image src="/logo.png" alt="Logo" width={32} height={32} />
           </span>
         </a>
       </footer>
     </div>
   )
 }
+
+export default Home
