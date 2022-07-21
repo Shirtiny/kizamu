@@ -1,5 +1,7 @@
 /** @type {import('next').NextConfig} */
 
+const withLinaria = require("next-linaria");
+
 const { DEPLOY_ENV } = process.env;
 
 const deployEnvs = {
@@ -14,7 +16,7 @@ const deployEnvs = {
   },
 };
 
-const deployEnv = deployEnvs[DEPLOY_ENV || "DEFAULT"]
+const deployEnv = deployEnvs[DEPLOY_ENV || "DEFAULT"];
 
 console.log("Deploy Env: ", deployEnv);
 
@@ -25,6 +27,9 @@ const nextConfig = {
     path: "",
   },
   basePath: deployEnv.basePath,
+  linaria: {
+    /* linaria options here */
+  },
 };
 
-module.exports = nextConfig
+module.exports = withLinaria(nextConfig);
