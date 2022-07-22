@@ -1,6 +1,9 @@
 import { NextPage } from "next";
+import dynamic from "next/dynamic";
 import { css } from "@linaria/core";
 import { styled } from "@linaria/react";
+
+const AppLayout = dynamic(() => import("../layouts/app"), { ssr: false });
 
 const StyledHome = styled.div`
   height: 100vh;
@@ -9,7 +12,11 @@ const StyledHome = styled.div`
 `;
 
 const Home: NextPage = () => {
-  return <StyledHome>hello</StyledHome>;
+  return (
+    <AppLayout>
+      <StyledHome></StyledHome>
+    </AppLayout>
+  );
 };
 
 export default Home;
