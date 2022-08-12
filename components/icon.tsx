@@ -1,7 +1,6 @@
 import { styled } from "@linaria/react";
 import { memo, ReactNode, FC } from "react";
-import { style } from "@shirtiny/utils/lib";
-const { clsPainPattern } = style;
+import { clsPainPattern } from "@shirtiny/utils/lib/style";
 
 const StyledIcon = styled.span`
   .react-icon {

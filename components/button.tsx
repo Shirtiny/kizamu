@@ -1,8 +1,6 @@
 import { FC, memo, ReactNode } from "react";
 import { styled } from "@linaria/react";
-import { style } from "@shirtiny/utils/lib";
-
-const { clsPainPattern } = style;
+import { clsPainPattern } from "@shirtiny/utils/lib/style";
 
 interface IStyledProps {}
 
