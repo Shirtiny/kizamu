@@ -15,7 +15,7 @@
   "dependencies": {
     "@linaria/core": "^3.0.0-beta.22",
     "@linaria/react": "^3.0.0-beta.22",
-    "@shirtiny/utils": "^0.1.4",
+    "@shirtiny/utils": "^0.1.9",
     "next": "12.1.6",
     "react": "18.2.0",
     "react-dom": "18.2.0",

@@ -1,9 +1,5 @@
-import { FC } from "react";
+import { FC, ReactNode } from "react";
 import { styled } from "@linaria/react";
-import Button from "../components/button";
-import Icon from "../components/icon";
-import { HiOutlineMenuAlt2 } from "react-icons/hi";
-import { GoMarkGithub } from "react-icons/go";
 
 const StyledAppLayout = styled.div`
   :global() {
@@ -65,35 +61,22 @@ const StyledAppLayout = styled.div`
   }
 `;
 
-interface IProps {}
+interface IChildren {
+  (params: { asideClassName: string; mainClassName: string }): ReactNode;
+}
 
-const AppLayout: FC<IProps> = () => {
+interface IProps {
+  Aside?: ReactNode;
+  Main?: ReactNode;
+  children?: IChildren;
+}
+
+const AppLayout: FC<IProps> = ({ Aside, Main, children }) => {
   return (
     <StyledAppLayout>
       <div className="container">
-        <aside className="aside">
-          <div className="menu">
-            <Button type="pain">
-              <Icon
-                Svg={
-                  <HiOutlineMenuAlt2 style={{ transform: "rotateX(180deg)" }} />
-                }
-              />
-            </Button>
-          </div>
-          <div className="flex-space"></div>
-          <nav className="nav">
-            {/* <a>latest</a>
-            <a>gallery</a> */}
-          </nav>
-          <div className="flex-space"></div>
-          <div className="links">
-            <Button type="pain">
-              <Icon size="large" Svg={<GoMarkGithub />} />
-            </Button>
-          </div>
-        </aside>
-        <main className="main"></main>
+        <aside className="aside">{Aside}</aside>
+        <div className="main">{Main}</div>
       </div>
     </StyledAppLayout>
   );
