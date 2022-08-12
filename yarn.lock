@@ -1197,10 +1197,10 @@
   resolved "https://registry.yarnpkg.com/@rushstack/eslint-patch/-/eslint-patch-1.1.3.tgz#6801033be7ff87a6b7cadaf5b337c9f366a3c4b0"
   integrity sha512-WiBSI6JBIhC6LRIsB2Kwh8DsGTlbBU+mLRxJmAe3LjHTdkDpwIbEOZgoXBbZilk/vlfjK8i6nKRAvIRn1XaIMw==
 
-"@shirtiny/utils@^0.1.10":
-  version "0.1.10"
-  resolved "https://registry.yarnpkg.com/@shirtiny/utils/-/utils-0.1.10.tgz#5a165a3821eaf96c5de0949808b132e79aa773db"
-  integrity sha512-lpwWj103MNWFcHbIImhiF6cHLsQKU7CGieL458xgWtXhC9tEny3CGfgpi/w6uSPYCm4D/uu2CeAG1C3rXaXEmA==
+"@shirtiny/utils@^0.1.11":
+  version "0.1.11"
+  resolved "https://registry.yarnpkg.com/@shirtiny/utils/-/utils-0.1.11.tgz#1920a68be676b176230025e7d0fea5b7700a880b"
+  integrity sha512-i9q2QbkPjG5iRsF63I8+P/XC5VJawO4l7rlGyHhs96iZXz0ocg4Y4VUYORYi+h+msiKZFjJT+AdhD2IiIMqgbA==
   dependencies:
     date-fns "^2.25.0"
     rxjs "^7.3.0"
