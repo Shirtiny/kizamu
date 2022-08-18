@@ -9,10 +9,10 @@ const StyledIcon = styled.span`
   }
 
   &.size-small {
-    font-size: 0.875rem;
+    font-size: 1rem;
   }
   &.size-middle {
-    font-size: 1.125rem;
+    font-size: 1.25rem;
   }
   &.size-large {
     font-size: 1.5rem;

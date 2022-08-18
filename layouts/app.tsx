@@ -1,5 +1,8 @@
 import { FC, ReactNode } from "react";
 import { styled } from "@linaria/react";
+import "@fontsource/lexend";
+import "@fontsource/chilanka";
+import "@fontsource/jetbrains-mono";
 
 const StyledAppLayout = styled.div`
   :global() {
@@ -10,8 +13,13 @@ const StyledAppLayout = styled.div`
     body {
       padding: 0;
       margin: 0;
-      font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-        Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+      font-family: "JetBrains Mono", monospace, -apple-system,
+        BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell,
+        Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+
+      /* font-family: "JetBrains Mono", monospace; */
+      /* "Chilanka", cursive */
+      /* "Lexend", sans-serif,*/
     }
 
     a {
@@ -40,18 +48,9 @@ const StyledAppLayout = styled.div`
     overflow: hidden;
 
     .aside {
-      display: flex;
-      flex-direction: column;
       width: 6.25rem;
-      border: 0.0625rem solid #e8e8e8;
-      padding: 32px 0;
-      .menu {
-        text-align: center;
-      }
-      .nav {
-      }
-      .links {
-      }
+      overflow-x: hidden;
+      overflow-y: auto;
     }
 
     .main {
@@ -61,17 +60,12 @@ const StyledAppLayout = styled.div`
   }
 `;
 
-interface IChildren {
-  (params: { asideClassName: string; mainClassName: string }): ReactNode;
-}
-
 interface IProps {
   Aside?: ReactNode;
   Main?: ReactNode;
-  children?: IChildren;
 }
 
-const AppLayout: FC<IProps> = ({ Aside, Main, children }) => {
+const AppLayout: FC<IProps> = ({ Aside, Main }) => {
   return (
     <StyledAppLayout>
       <div className="container">
