@@ -29,6 +29,8 @@ const nextConfig = {
   basePath: deployEnv.basePath,
   linaria: {
     /* linaria options here */
+    // displayName: true,
+    classNameSlug: (hash, title) => `${title}__${hash}`,
   },
 };
 

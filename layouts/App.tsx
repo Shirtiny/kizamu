@@ -49,8 +49,6 @@ const StyledAppLayout = styled.div`
 
     .aside {
       width: 6.25rem;
-      overflow-x: hidden;
-      overflow-y: auto;
     }
 
     .main {

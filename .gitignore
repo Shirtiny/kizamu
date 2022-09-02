@@ -34,5 +34,7 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 
-.vscode
 .idea
+
+/.vscode/*
+!/.vscode/launch.json

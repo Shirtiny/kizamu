@@ -2,10 +2,13 @@ import { styled } from "@linaria/react";
 import { FC, memo } from "react";
 import { HiOutlineMenuAlt2 } from "react-icons/hi";
 import { VscGithubInverted, VscTwitter } from "react-icons/vsc";
-import Button from "../components/common/button";
-import Icon from "../components/common/icon";
+import Button from "./common/Button";
+import Icon from "./common/Icon";
+import ActiveBar from "./ActiveBar";
 
-const StyledAside = styled.div`
+interface IStyledAsideProps {}
+
+const StyledAside = styled.div<IStyledAsideProps>`
   height: 100%;
   display: flex;
   flex-direction: column;
@@ -17,8 +20,9 @@ const StyledAside = styled.div`
   .nav {
     position: relative;
     flex: 1;
-    padding: 4.375rem 0;
+    margin: 4.375rem 0;
     text-align: center;
+    overflow-y: auto;
     .nav-item {
       position: relative;
       cursor: pointer;
@@ -55,15 +59,6 @@ const StyledAside = styled.div`
         }
       }
     }
-
-    .active-bar {
-      position: absolute;
-      top: 0;
-      right: 0;
-      background-color: #fb7575;
-      width: 0.1875rem;
-      height: 5.625rem;
-    }
   }
   .links {
     display: flex;
@@ -89,7 +84,7 @@ const Aside: FC = () => {
         <a className="nav-item active">latest</a>
         <a className="nav-item">gallery</a>
         <a className="nav-item dot">news</a>
-        <div className="active-bar" />
+        <ActiveBar />
       </nav>
       <div className="links">
         <Button type="pain">
