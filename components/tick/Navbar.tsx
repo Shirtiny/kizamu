@@ -1,11 +1,12 @@
-import { FC, memo } from "react";
+import { FC, memo, useCallback, useMemo } from "react";
 import { styled } from "@linaria/react";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { cls } from "@shirtiny/utils/lib/style";
 import Link from "../common/Link";
 import ActiveBar from "../common/ActiveBar";
 import routerConfig from "../../router/config";
 import logger from "../../utils/logger";
+import { IRoute } from "../../router/type";
 
 const StyledNavbar = styled.div`
   position: relative;
@@ -58,10 +59,21 @@ interface INavbarProps {}
 const Navbar: FC<INavbarProps> = () => {
   const currentLocation = useLocation();
 
+  const { currentActiveIndex } = useMemo(() => {
+    let tempIndex = 0;
+    const route = routerConfig.tick.find((r, index) => {
+      const flag = r.path === currentLocation.pathname;
+      if (flag) tempIndex = index;
+      return flag;
+    });
+    logger.debug("current route", { route, currentActiveIndex: tempIndex });
+    return { currentActiveIndex: tempIndex };
+  }, [currentLocation]);
+
   return (
     <StyledNavbar className="nav">
-      {routerConfig.tick.map((r) => {
-        const isActive = r.path === currentLocation.pathname;
+      {routerConfig.tick.map((r, index) => {
+        const isActive = index === currentActiveIndex;
         const className = cls("nav-item", { active: isActive });
         return (
           <Link key={r.key} className={className} href={r.path}>
@@ -69,7 +81,7 @@ const Navbar: FC<INavbarProps> = () => {
           </Link>
         );
       })}
-      <ActiveBar />
+      <ActiveBar currentActiveIndex={currentActiveIndex} />
     </StyledNavbar>
   );
 };

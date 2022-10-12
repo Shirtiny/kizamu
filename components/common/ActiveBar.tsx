@@ -5,12 +5,20 @@ import {
   useEffect,
   useRef,
   MutableRefObject,
-  useMemo,
 } from "react";
 import { styled } from "@linaria/react";
 import { useSpring, animated, config, SpringRef } from "@react-spring/web";
 import dom from "@shirtiny/utils/lib/dom";
+import lang from "@shirtiny/utils/lib/lang";
 import logger from "../../utils/logger";
+
+const calcBarStyle = (el: HTMLElement) => {
+  const height = el.offsetHeight / 2;
+  return {
+    y: el.offsetTop + height / 2,
+    height,
+  };
+};
 
 interface ISpringApiProperties {
   y: number;
@@ -20,16 +28,9 @@ interface ISpringApiProperties {
 const useActiveBarListener = (arg: {
   elRef: MutableRefObject<HTMLDivElement | null>;
   springApi: SpringRef<ISpringApiProperties>;
+  auto: boolean;
 }) => {
-  const { elRef, springApi } = arg;
-
-  const calcBarStyle = useCallback((el: HTMLElement) => {
-    const height = el.offsetHeight / 2;
-    return {
-      y: el.offsetTop + height / 2,
-      height,
-    };
-  }, []);
+  const { elRef, springApi, auto } = arg;
 
   const itemClickListener = useCallback(
     (e: Event) => {
@@ -39,10 +40,13 @@ const useActiveBarListener = (arg: {
       if (!el) return;
       springApi.start(calcBarStyle(el));
     },
-    [calcBarStyle, springApi]
+    [springApi]
   );
 
+  // init
   useEffect(() => {
+    if (!auto) return;
+
     const activeBarNode = elRef.current;
     logger.doms("ActiveBar node", activeBarNode);
     if (!activeBarNode) return;
@@ -51,7 +55,7 @@ const useActiveBarListener = (arg: {
     logger.doms("ActiveBar container", container, firstChild);
     if (!container || !firstChild || firstChild === activeBarNode) return;
     logger.log("add activeBar listener");
-    container.childNodes.forEach((node) => {
+    Array.from(container.children).forEach((node) => {
       activeBarNode !== node &&
         node.addEventListener("click", itemClickListener);
     });
@@ -59,12 +63,12 @@ const useActiveBarListener = (arg: {
     springApi.set(calcBarStyle(firstChild));
     return () => {
       logger.log("remove activeBar listener");
-      container.childNodes.forEach((node) => {
+      Array.from(container.children).forEach((node) => {
         activeBarNode !== node &&
           node.removeEventListener("click", itemClickListener);
       });
     };
-  }, [springApi, itemClickListener, elRef, calcBarStyle]);
+  }, [springApi, itemClickListener, elRef, auto]);
 };
 
 const StyledActiveBar = styled(animated.div)`
@@ -78,12 +82,47 @@ const StyledActiveBar = styled(animated.div)`
   border-radius: 0.1875rem;
 `;
 
-const ActiveBar: FC = ({}) => {
+interface IActiveBarProps {
+  activeKeyAttributeName?: string;
+  currentActiveIndex?: string | number;
+  auto?: boolean;
+  onActiveEnd?: Function;
+}
+
+const ATTRIBUTE_PREFIX = "item";
+
+const formateActiveIndex = (index?: number | string) => {
+  if (lang.isNullOrUndefined(index)) return "";
+  return `${ATTRIBUTE_PREFIX}-${index}`;
+};
+
+const ActiveBar: FC<IActiveBarProps> = ({
+  activeKeyAttributeName = "data-active-bar-key",
+  currentActiveIndex,
+  auto = false,
+  onActiveEnd,
+}) => {
+  const currentActiveKey = formateActiveIndex(currentActiveIndex);
+
   const elRef = useRef<HTMLDivElement | null>(null);
 
+  const loadRef = useCallback(
+    (el: HTMLDivElement) => {
+      elRef.current = el;
+      const container = el.parentElement;
+      if (!container) return;
+      Array.from(container.children).forEach((node, index) => {
+        if (node instanceof Element) {
+          node.setAttribute(activeKeyAttributeName, formateActiveIndex(index));
+        }
+      });
+    },
+    [activeKeyAttributeName]
+  );
+
   const handleActiveEnd = useCallback(() => {
-    logger.log("active");
-  }, []);
+    onActiveEnd && onActiveEnd();
+  }, [onActiveEnd]);
 
   const [styles, springApi] = useSpring<ISpringApiProperties>(() => ({
     y: 0,
@@ -98,9 +137,27 @@ const ActiveBar: FC = ({}) => {
   useActiveBarListener({
     elRef,
     springApi,
+    auto,
   });
 
-  return <StyledActiveBar ref={elRef} style={{ ...styles }}></StyledActiveBar>;
+  // current active
+  useEffect(() => {
+    logger.debug("switch activeBar", { currentActiveKey });
+    const container = elRef.current?.parentElement;
+    if (!container) return;
+    const currentActiveNode =
+      currentActiveKey &&
+      container.querySelector(
+        `[${activeKeyAttributeName}=${currentActiveKey}]`
+      );
+    // update spring
+    currentActiveNode &&
+      springApi.start(calcBarStyle(currentActiveNode as HTMLElement));
+  }, [activeKeyAttributeName, currentActiveKey, springApi]);
+
+  return (
+    <StyledActiveBar ref={loadRef} style={{ ...styles }}></StyledActiveBar>
+  );
 };
 
 export default memo(ActiveBar);
