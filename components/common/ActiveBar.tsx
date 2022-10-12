@@ -28,9 +28,9 @@ interface ISpringApiProperties {
 const useActiveBarListener = (arg: {
   elRef: MutableRefObject<HTMLDivElement | null>;
   springApi: SpringRef<ISpringApiProperties>;
-  auto: boolean;
+  enable: boolean;
 }) => {
-  const { elRef, springApi, auto } = arg;
+  const { elRef, springApi, enable } = arg;
 
   const itemClickListener = useCallback(
     (e: Event) => {
@@ -45,7 +45,7 @@ const useActiveBarListener = (arg: {
 
   // init
   useEffect(() => {
-    if (!auto) return;
+    if (!enable) return;
 
     const activeBarNode = elRef.current;
     logger.doms("ActiveBar node", activeBarNode);
@@ -68,7 +68,7 @@ const useActiveBarListener = (arg: {
           node.removeEventListener("click", itemClickListener);
       });
     };
-  }, [springApi, itemClickListener, elRef, auto]);
+  }, [springApi, itemClickListener, elRef, enable]);
 };
 
 const StyledActiveBar = styled(animated.div)`
@@ -137,7 +137,7 @@ const ActiveBar: FC<IActiveBarProps> = ({
   useActiveBarListener({
     elRef,
     springApi,
-    auto,
+    enable: auto,
   });
 
   // current active
