@@ -1,6 +1,7 @@
-import "../styles/globals.css";
 import type { AppProps } from "next/app";
 import { IconContext } from "react-icons/lib";
+import "nprogress/nprogress.css";
+import "../styles/globals.css";
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (

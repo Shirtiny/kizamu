@@ -26,11 +26,27 @@ const nextConfig = {
     loader: "akamai",
     path: "",
   },
-  basePath: deployEnv.basePath,
   linaria: {
     /* linaria options here */
     // displayName: true,
     classNameSlug: (hash, title) => `${title}__${hash}`,
+  },
+  basePath: deployEnv.basePath,
+  async redirects() {
+    return [
+      {
+        source: "/",
+        destination: "/tick#/latest",
+        permanent: false,
+      },
+      {
+        // does not add /docs since basePath: false is set
+        source: "/without-basePath",
+        destination: "/another",
+        basePath: false,
+        permanent: false,
+      },
+    ];
   },
 };
 
