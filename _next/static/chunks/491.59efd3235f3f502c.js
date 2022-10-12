@@ -1,0 +1,1 @@
+(self.webpackChunk_N_E=self.webpackChunk_N_E||[]).push([[491],{1491:function(e,t,n){"use strict";n.r(t);var s=n(7294),a=n(3715),u=n(5893),c=(0,a.Z)("div")({name:"StyledLatest",class:"StyledLatest__s16wnrq4"}),l=function(){return(0,u.jsx)(c,{children:"Latest"})};t.default=(0,s.memo)(l),n(9394)},9394:function(){}}]);
