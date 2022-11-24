@@ -23,7 +23,7 @@
     "@shirtiny/logger": "^2.2.1",
     "@shirtiny/utils": "^0.2.1",
     "modern-normalize": "^1.1.0",
-    "next": "13.0.5",
+    "next": "12.2.0",
     "nprogress": "^0.2.0",
     "react": "18.2.0",
     "react-dom": "18.2.0",
@@ -40,7 +40,7 @@
     "@types/react": "18.0.12",
     "@types/react-dom": "18.0.5",
     "eslint": "8.17.0",
-    "eslint-config-next": "13.0.5",
+    "eslint-config-next": "12.1.6",
     "gh-pages": "^4.0.0",
     "next-linaria": "1.0.0-beta",
     "typescript": "4.7.3"
