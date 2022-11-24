@@ -89,11 +89,11 @@ interface IActiveBarProps {
   onActiveEnd?: Function;
 }
 
-const ATTRIBUTE_PREFIX = "item";
+const ATTRIBUTE_SUFFIX = "item";
 
 const formateActiveIndex = (index?: number | string) => {
   if (lang.isNullOrUndefined(index)) return "";
-  return `${ATTRIBUTE_PREFIX}-${index}`;
+  return `sh-${index}-${ATTRIBUTE_SUFFIX}`;
 };
 
 const ActiveBar: FC<IActiveBarProps> = ({

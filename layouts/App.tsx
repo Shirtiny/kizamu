@@ -3,6 +3,7 @@ import { styled } from "@linaria/react";
 import "@fontsource/lexend";
 import "@fontsource/chilanka";
 import "@fontsource/jetbrains-mono";
+import "modern-normalize/modern-normalize.css";
 
 const StyledAppLayout = styled.div`
   :global() {
