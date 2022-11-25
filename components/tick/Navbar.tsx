@@ -1,4 +1,4 @@
-import { FC, memo, useCallback, useMemo } from "react";
+import { FC, memo, useCallback, useMemo, useState } from "react";
 import { styled } from "@linaria/react";
 import { useLocation, useNavigate } from "react-router-dom";
 import { cls } from "@shirtiny/utils/lib/style";
@@ -68,7 +68,7 @@ const Navbar: FC<INavbarProps> = () => {
     });
     logger.debug("current route", { route, currentActiveIndex: tempIndex });
     return { currentActiveIndex: tempIndex };
-  }, [currentLocation]);
+  }, [currentLocation.pathname]);
 
   return (
     <StyledNavbar className="nav">

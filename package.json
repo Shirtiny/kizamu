@@ -22,6 +22,7 @@
     "@sentry/nextjs": "^7.21.1",
     "@shirtiny/logger": "^2.2.1",
     "@shirtiny/utils": "^0.2.1",
+    "lodash": "^4.17.21",
     "modern-normalize": "^1.1.0",
     "next": "12.2.0",
     "nprogress": "^0.2.0",
