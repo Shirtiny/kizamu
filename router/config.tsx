@@ -17,6 +17,7 @@ const tick: IRoute[] = [
     key: "news",
     path: "/news",
     label: "news",
+    Component: lazy(() => import("../components/tick/Editor")),
   },
 ];
 

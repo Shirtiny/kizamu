@@ -1,5 +1,7 @@
 import { FC, memo, ReactNode } from "react";
 import { styled } from "@linaria/react";
+import AppRoutes from "../router/AppRoutes";
+import routerConfig from "../router/config";
 
 const StyledTickAppLayout = styled.div`
   height: 100vh;
