@@ -100,7 +100,7 @@ const StyledActiveBar = styled(animated.div)`
   position: absolute;
   top: 0;
   right: 0;
-  background-color: #fb7575;
+  background-color: var(--color-primary);
   width: 0.1875rem;
   /* height: 0rem; */
   /* height: 5.625rem; */

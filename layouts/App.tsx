@@ -1,9 +1,12 @@
-import { FC, memo, ReactNode } from "react";
+import { FC, memo, ReactNode, useEffect } from "react";
 import { styled } from "@linaria/react";
+import reactiveX from "@shirtiny/utils/lib/reactiveX";
+import theme, { ColorThemes } from "../styles/theme";
+import logger from "../utils/logger";
+import "modern-normalize/modern-normalize.css";
 import "@fontsource/lexend";
 import "@fontsource/chilanka";
 import "@fontsource/jetbrains-mono";
-import "modern-normalize/modern-normalize.css";
 
 const StyledAppLayout = styled.div`
   :global() {
@@ -30,6 +33,34 @@ const StyledAppLayout = styled.div`
 
     * {
       box-sizing: border-box;
+      /* will-change: background-color, color; */
+      transition: 0.4s ease;
+    }
+
+    html[data-theme="fashion"]:root {
+      --color-primary: #ff7576;
+      --color-primary-light: #ff9b9c;
+      --color-primary-dark: #ff4e4f;
+      --color-primary-background-color: #fdfdfd;
+      --color-primary-background-color-dark: #f6f6f6;
+      --color-primary-text: #8b8b8b;
+      --color-primary-text-light: #fff;
+      --color-primary-text-dark: #848484;
+      --color-primary-text-lighter: #fff;
+      --color-primary-text-darker: #fff;
+    }
+
+    html[data-theme="miku"]:root {
+      --color-primary: #00b7c3;
+      --color-primary-light: #00d9e6;
+      --color-primary-dark: #0097a3;
+      --color-primary-background-color: #fdfdfd;
+      --color-primary-background-color-dark: #000;
+      --color-primary-text: #8b8b8b;
+      --color-primary-text-light: #fff;
+      --color-primary-text-dark: #848484;
+      --color-primary-text-lighter: #fff;
+      --color-primary-text-darker: #fff;
     }
 
     .flex-space {
@@ -43,6 +74,20 @@ interface IProps {
 }
 
 const AppLayout: FC<IProps> = ({ children }) => {
+  useEffect(() => {
+    const task = reactiveX.createTimerTask({
+      name: "themeSwitchTimer",
+      sec: 5,
+      request: async (index: number) => {
+        logger.log("themeSwitchTimer", index);
+        theme.switchTheme(
+          index % 2 === 0 ? ColorThemes.FASHION : ColorThemes.MIKU
+        );
+        return true;
+      },
+    });
+    task.start();
+  }, []);
   return <StyledAppLayout>{children}</StyledAppLayout>;
 };
 

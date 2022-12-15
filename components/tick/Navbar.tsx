@@ -25,7 +25,7 @@ const StyledNavbar = styled.div`
     width: 4.6875rem;
     white-space: nowrap;
     transform: rotate(-90deg);
-    color: #8b8b8b;
+    color: var(--color-primary-text);
     letter-spacing: 0.0625rem;
     font-family: "Lexend", sans-serif;
     text-transform: capitalize;
@@ -36,7 +36,7 @@ const StyledNavbar = styled.div`
       margin-bottom: 2rem;
     }
     &.active {
-      color: #ff7576;
+      color: var(--color-primary);
     }
     &.dot {
       &::before {
@@ -48,7 +48,7 @@ const StyledNavbar = styled.div`
         width: 0.5rem;
         height: 0.5rem;
         border-radius: 50%;
-        background-color: #ff7576;
+        background-color: var(--color-primary);
       }
     }
   }

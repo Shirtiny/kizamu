@@ -5,7 +5,7 @@ import { clsPainPattern } from "@shirtiny/utils/lib/style";
 const StyledIcon = styled.span`
   .react-icon {
     vertical-align: middle;
-    color: #848484;
+    color: var(--color-primary-text-dark);
   }
 
   &.size-small {

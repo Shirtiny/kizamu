@@ -6,12 +6,12 @@ import routerConfig from "../router/config";
 const StyledTickAppLayout = styled.div`
   height: 100vh;
   padding: 2rem 1.5rem;
-  background-color: #f6f6f6;
+  background-color: var(--color-primary-background-color-dark);
 
   .container {
     height: 100%;
     display: flex;
-    background-color: #fdfdfd;
+    background-color: var(--color-primary-background-color);
     box-shadow: rgba(0, 0, 0, 0.25) 0rem 1.5625rem 3.125rem -0.75rem;
     overflow: hidden;
 
