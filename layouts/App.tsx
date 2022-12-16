@@ -89,6 +89,7 @@ const AppLayout: FC<IProps> = ({ children }) => {
       },
     });
     task.start();
+    logger.log("dev taskMap", dev.get("taskMap", "123456"));
   }, []);
   return <StyledAppLayout>{children}</StyledAppLayout>;
 };
