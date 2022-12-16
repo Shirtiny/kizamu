@@ -1,6 +1,7 @@
 import { FC, memo, ReactNode, useEffect } from "react";
 import { styled } from "@linaria/react";
 import reactiveX from "@shirtiny/utils/lib/reactiveX";
+import dev from "@shirtiny/utils/lib/dev";
 import theme, { ColorThemes } from "../styles/theme";
 import logger from "../utils/logger";
 import "modern-normalize/modern-normalize.css";
@@ -34,7 +35,6 @@ const StyledAppLayout = styled.div`
     * {
       box-sizing: border-box;
       /* will-change: background-color, color; */
-      transition: 0.4s ease;
     }
 
     html[data-theme="fashion"]:root {
@@ -55,7 +55,7 @@ const StyledAppLayout = styled.div`
       --color-primary-light: #00d9e6;
       --color-primary-dark: #0097a3;
       --color-primary-background-color: #fdfdfd;
-      --color-primary-background-color-dark: #000;
+      --color-primary-background-color-dark: #f6f6f6;
       --color-primary-text: #8b8b8b;
       --color-primary-text-light: #fff;
       --color-primary-text-dark: #848484;
@@ -73,8 +73,10 @@ interface IProps {
   children?: ReactNode;
 }
 
+(window as any).dev = dev;
 const AppLayout: FC<IProps> = ({ children }) => {
   useEffect(() => {
+    logger.log("process.env", process.env);
     const task = reactiveX.createTimerTask({
       name: "themeSwitchTimer",
       sec: 5,

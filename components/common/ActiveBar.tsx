@@ -105,6 +105,7 @@ const StyledActiveBar = styled(animated.div)`
   /* height: 0rem; */
   /* height: 5.625rem; */
   border-radius: 0.1875rem;
+  transition: background-color 0.4s ease-in-out;
 `;
 
 interface IActiveBarProps {

@@ -29,6 +29,7 @@ const StyledNavbar = styled.div`
     letter-spacing: 0.0625rem;
     font-family: "Lexend", sans-serif;
     text-transform: capitalize;
+    transition: color 0.4s ease-in-out;
     /* &::first-letter {
         text-transform: uppercase;
       } */
