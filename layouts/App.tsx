@@ -77,6 +77,8 @@ interface IProps {
 }
 
 (window as any).dev = dev;
+logger.log("dev key taskMap");
+
 const AppLayout: FC<IProps> = ({ children }) => {
   useEffect(() => {
     logger.log("process.env", process.env);
@@ -92,7 +94,6 @@ const AppLayout: FC<IProps> = ({ children }) => {
       },
     });
     task.start();
-    logger.log("dev taskMap", dev.get("taskMap", "123456"));
   }, []);
   return (
     <StyledAppLayout>
