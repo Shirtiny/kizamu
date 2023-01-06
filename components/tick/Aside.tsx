@@ -1,5 +1,5 @@
 import { FC, memo } from "react";
-import { styled } from "@linaria/react";
+import styled from "styled-components";
 import { HiOutlineMenuAlt2 } from "react-icons/hi";
 import { VscGithubInverted, VscTwitter } from "react-icons/vsc";
 import Button from "../common/Button";

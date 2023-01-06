@@ -1,6 +1,5 @@
 /** @type {import('next').NextConfig} */
 
-const withLinaria = require("next-linaria");
 const { withSentryConfig } = require("@sentry/nextjs");
 
 const { DEPLOY_ENV } = process.env;
@@ -24,13 +23,8 @@ console.log("Deploy Env: ", deployEnv);
 const nextConfig = {
   reactStrictMode: true,
   images: {
-    loader: "akamai",
-    path: "",
-  },
-  linaria: {
-    /* linaria options here */
-    // displayName: true,
-    classNameSlug: (hash, title) => `${title}__${hash}`,
+    // loader: "akamai",
+    // path: "",
   },
   sentry: {
     // Use `hidden-source-map` rather than `source-map` as the Webpack `devtool`
@@ -73,7 +67,4 @@ const sentryWebpackPluginOptions = {
   // https://github.com/getsentry/sentry-webpack-plugin#options.
 };
 
-module.exports = withSentryConfig(
-  withLinaria(nextConfig),
-  sentryWebpackPluginOptions
-);
+module.exports = withSentryConfig(nextConfig, sentryWebpackPluginOptions);

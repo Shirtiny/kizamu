@@ -1,5 +1,5 @@
 import { FC, memo, ReactNode, useCallback } from "react";
-import { styled } from "@linaria/react";
+import styled from "styled-components";
 import { useNavigate } from "react-router-dom";
 
 const StyledA = styled.a``;

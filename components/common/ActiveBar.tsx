@@ -7,7 +7,7 @@ import {
   useRef,
   MutableRefObject,
 } from "react";
-import { styled } from "@linaria/react";
+import styled from "styled-components";
 import { useSpring, animated, config, SpringRef } from "@react-spring/web";
 import { kebabCase, camelCase } from "lodash";
 import dom from "@shirtiny/utils/lib/dom";

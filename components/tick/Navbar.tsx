@@ -1,5 +1,5 @@
 import { FC, memo, useCallback, useMemo, useState } from "react";
-import { styled } from "@linaria/react";
+import styled from "styled-components";
 import { useLocation, useNavigate } from "react-router-dom";
 import { cls } from "@shirtiny/utils/lib/style";
 import Link from "../common/Link";

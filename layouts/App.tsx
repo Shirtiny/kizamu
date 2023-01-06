@@ -1,5 +1,5 @@
 import { FC, memo, ReactNode, useEffect } from "react";
-import { styled } from "@linaria/react";
+import styled, { createGlobalStyle } from "styled-components";
 import reactiveX from "@shirtiny/utils/lib/reactiveX";
 import dev from "@shirtiny/utils/lib/dev";
 import theme, { ColorThemes } from "../styles/theme";
@@ -9,9 +9,8 @@ import "@fontsource/lexend";
 import "@fontsource/chilanka";
 import "@fontsource/jetbrains-mono";
 
-const StyledAppLayout = styled.div`
-  :global() {
-    html {
+const GlobalStyle = createGlobalStyle`
+ html {
       font-size: 16px;
     }
     html,
@@ -66,8 +65,10 @@ const StyledAppLayout = styled.div`
     .flex-space {
       flex: 1;
     }
-  }
+
 `;
+
+const StyledAppLayout = styled.div``;
 
 interface IProps {
   children?: ReactNode;
@@ -91,7 +92,12 @@ const AppLayout: FC<IProps> = ({ children }) => {
     task.start();
     logger.log("dev taskMap", dev.get("taskMap", "123456"));
   }, []);
-  return <StyledAppLayout>{children}</StyledAppLayout>;
+  return (
+    <StyledAppLayout>
+      <GlobalStyle />
+      {children}
+    </StyledAppLayout>
+  );
 };
 
 export default memo(AppLayout);

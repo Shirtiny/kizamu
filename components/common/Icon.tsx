@@ -1,4 +1,4 @@
-import { styled } from "@linaria/react";
+import styled from "styled-components";
 import { memo, ReactNode, FC } from "react";
 import { clsPainPattern } from "@shirtiny/utils/lib/style";
 

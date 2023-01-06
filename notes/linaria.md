@@ -39,7 +39,7 @@ module.exports = withLinaria(nextConfig);
 ```typescript
 import { NextPage } from "next";
 import { css } from "@linaria/core";
-import { styled } from "@linaria/react";
+import styled from "styled-components";
 
 const StyledHome = styled.div`
   height: 100vh;

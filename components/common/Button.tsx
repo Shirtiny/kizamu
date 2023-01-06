@@ -1,5 +1,5 @@
 import { FC, memo, ReactNode } from "react";
-import { styled } from "@linaria/react";
+import styled from "styled-components";
 import { clsPainPattern } from "@shirtiny/utils/lib/style";
 
 interface IStyledProps {}
