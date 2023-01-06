@@ -1,4 +1,6 @@
+"use client";
 import { FC, memo, ReactNode, useEffect } from "react";
+import { IconContext } from "react-icons/lib";
 import styled, { createGlobalStyle } from "styled-components";
 import reactiveX from "@shirtiny/utils/lib/reactiveX";
 import dev from "@shirtiny/utils/lib/dev";
@@ -95,7 +97,9 @@ const AppLayout: FC<IProps> = ({ children }) => {
   return (
     <StyledAppLayout>
       <GlobalStyle />
-      {children}
+      <IconContext.Provider value={{ className: "react-icon", style: {} }}>
+        {children}
+      </IconContext.Provider>
     </StyledAppLayout>
   );
 };

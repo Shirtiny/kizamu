@@ -1,3 +1,4 @@
+'use client';
 import { lazy } from "react";
 import { IRoute } from "./type";
 

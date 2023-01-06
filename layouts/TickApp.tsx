@@ -1,7 +1,6 @@
 import { FC, memo, ReactNode } from "react";
 import styled from "styled-components";;
-import AppRoutes from "../router/AppRoutes";
-import routerConfig from "../router/config";
+
 
 const StyledTickAppLayout = styled.div`
   height: 100vh;

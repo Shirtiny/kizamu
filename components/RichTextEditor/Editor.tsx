@@ -1,3 +1,4 @@
+'use client';
 import { FC, memo, useState } from "react";
 import styled from "styled-components";
 // Import the Slate editor factory.

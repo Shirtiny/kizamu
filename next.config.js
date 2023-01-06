@@ -2,7 +2,9 @@
 
 const { withSentryConfig } = require("@sentry/nextjs");
 
-const { DEPLOY_ENV } = process.env;
+const { DEPLOY_ENV, NODE_ENV } = process.env;
+
+const isProduction = NODE_ENV === "production";
 
 const deployEnvs = {
   DEFAULT: {
@@ -21,6 +23,20 @@ const deployEnv = deployEnvs[DEPLOY_ENV || "DEFAULT"];
 console.log("Deploy Env: ", deployEnv);
 
 const nextConfig = {
+  experimental: {
+    appDir: true,
+  },
+  compiler: {
+    // removeConsole: isProduction
+    //   ? {
+    //       exclude: ["log", "error"],
+    //     }
+    //   : false,
+    styledComponents: {
+      displayName: true,
+      fileName: false,
+    },
+  },
   reactStrictMode: true,
   images: {
     // loader: "akamai",
