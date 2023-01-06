@@ -543,10 +543,10 @@
   resolved "https://registry.yarnpkg.com/@shirtiny/logger/-/logger-2.2.1.tgz#3d47cb36a8985a67547abfcb291d398885c96fe4"
   integrity sha512-zjNiGjjNoVuGDfcqgIHj5rjc69xfiVTT4tbtAPfDWlHjUCWDvfafbcj01T9evMnM0yk4b60ndim7NTVKdrxSxw==
 
-"@shirtiny/utils@^0.2.3":
-  version "0.2.3"
-  resolved "https://registry.yarnpkg.com/@shirtiny/utils/-/utils-0.2.3.tgz#c254cb379fcb1372ead626b50786d9894ad04702"
-  integrity sha512-eJy5xn8oZ+d4AHS208szMcu5gT/b0sW8fxTgISse5K3ehsNDv8mbLvpmU+Nv2VphsNWDhQ6wUplGfDTdYDyqdQ==
+"@shirtiny/utils@^0.2.4":
+  version "0.2.4"
+  resolved "https://registry.yarnpkg.com/@shirtiny/utils/-/utils-0.2.4.tgz#cea19700eee3fbfe72f86809fa400bf773a31052"
+  integrity sha512-5LaHGgN4lEXICDlPuDdjGac1uSk9Pk/jno4oFl/EJwm+GHGjnmgvyoXW3lGV8UNP1PJM20gvgQ8u0gpPFBet5g==
   dependencies:
     date-fns "^2.25.0"
     rxjs "^7.3.0"
