@@ -1,4 +1,4 @@
-import { FC, memo, ReactNode } from "react";
+import { FC, memo, MouseEventHandler, ReactNode } from "react";
 import styled from "styled-components";
 import { clsPainPattern } from "@shirtiny/utils/lib/style";
 
@@ -40,11 +40,16 @@ interface IProps {
   children?: ReactNode;
   type?: "pain";
   size?: "middle";
+  onClick?: MouseEventHandler<HTMLButtonElement>;
 }
 
-const Button: FC<IProps> = ({ children, type, size = "middle" }) => {
+const Button: FC<IProps> = ({ children, type, size = "middle", onClick }) => {
   const className = clsPainPattern({ type, size });
-  return <StyledButton className={className}>{children}</StyledButton>;
+  return (
+    <StyledButton className={className} onClick={onClick}>
+      {children}
+    </StyledButton>
+  );
 };
 
 export default memo(Button);
