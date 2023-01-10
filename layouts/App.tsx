@@ -98,17 +98,18 @@ const AppLayout: FC<IProps> = ({ children }) => {
   }, []);
   return (
     <StyledAppLayout>
-      <ErrorBoundary
-        showDialog
-        fallback={({ error, componentStack, resetError }) => (
-          <span>An error has occurred</span>
-        )}
-      >
-        <GlobalStyle />
-        <IconContext.Provider value={{ className: "react-icon", style: {} }}>
+      <GlobalStyle />
+      <IconContext.Provider value={{ className: "react-icon", style: {} }}>
+        <ErrorBoundary
+          showDialog
+          fallback={({ error, componentStack, resetError }) => {
+            console.log("ErrorBoundary fallback");
+            return <span>An error has occurred</span>;
+          }}
+        >
           {children}
-        </IconContext.Provider>
-      </ErrorBoundary>
+        </ErrorBoundary>
+      </IconContext.Provider>
     </StyledAppLayout>
   );
 };
