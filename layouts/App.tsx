@@ -1,6 +1,7 @@
 "use client";
 import { FC, memo, ReactNode, useEffect } from "react";
 import { IconContext } from "react-icons/lib";
+import { ErrorBoundary, setUser } from "@sentry/react";
 import styled, { createGlobalStyle } from "styled-components";
 import reactiveX from "@shirtiny/utils/lib/reactiveX";
 import dev from "@shirtiny/utils/lib/dev";
@@ -97,10 +98,17 @@ const AppLayout: FC<IProps> = ({ children }) => {
   }, []);
   return (
     <StyledAppLayout>
-      <GlobalStyle />
-      <IconContext.Provider value={{ className: "react-icon", style: {} }}>
-        {children}
-      </IconContext.Provider>
+      <ErrorBoundary
+        showDialog
+        fallback={({ error, componentStack, resetError }) => (
+          <span>An error has occurred</span>
+        )}
+      >
+        <GlobalStyle />
+        <IconContext.Provider value={{ className: "react-icon", style: {} }}>
+          {children}
+        </IconContext.Provider>
+      </ErrorBoundary>
     </StyledAppLayout>
   );
 };
