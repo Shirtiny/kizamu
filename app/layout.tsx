@@ -10,7 +10,14 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body>
+      <head>
+        <meta
+          name="viewport"
+          content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no"
+        />
+        <script defer src="./js/rem.js"></script>
+      </head>
+      <body className="root-app-layout">
         <AppLayout>{children}</AppLayout>
       </body>
     </html>
