@@ -9,13 +9,13 @@ const StyledIcon = styled.span`
   }
 
   &.size-small {
-    font-size: 16px;
+    font-size: .16rem;
   }
   &.size-middle {
-    font-size: 20px;
+    font-size: .2rem;
   }
   &.size-large {
-    font-size: 24px;
+    font-size: .24rem;
   }
 `;
 

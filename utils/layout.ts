@@ -11,22 +11,12 @@ function remFlexible(win: Window) {
   // 以某个分辨率宽度为基准 通过baseWidth计算remRate 且低于baseWidth时不进行缩放
   const baseWidth = 1920;
   // 以某个fontSize的值为基准
-  const baseFontSize = 16;
+  const baseFontSize = 100;
   // baseWidth减小至1000
   const minWidth = 1000;
   // 对整体基准值进行缩放
   const scale = minWidth / baseWidth;
   const baseRemRate = (baseWidth * scale) / baseFontSize;
-
-  // adjust body font size
-  function setBodyFontSize() {
-    if (document.body) {
-      document.body.style.fontSize = baseFontSize * dpr + "px";
-    } else {
-      document.addEventListener("DOMContentLoaded", setBodyFontSize);
-    }
-  }
-  setBodyFontSize();
 
   function setRemUnit() {
     const rem = Math.max(docEl.clientWidth, minWidth) / baseRemRate;

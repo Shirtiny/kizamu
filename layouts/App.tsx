@@ -13,13 +13,11 @@ import "@fontsource/jetbrains-mono";
 import layout from "../utils/layout";
 
 const GlobalStyle = createGlobalStyle`
- html {
-      font-size: 16px;
-    }
     html,
     body {
       padding: 0;
       margin: 0;
+      
       font-family: "JetBrains Mono", monospace, -apple-system,
         BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell,
         Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
@@ -64,6 +62,10 @@ const GlobalStyle = createGlobalStyle`
       --color-primary-text-lighter: #fff;
       --color-primary-text-darker: #fff;
     }
+    
+    .root-app-layout {
+      font-size: .16rem;
+    }
 
     .flex-space {
       flex: 1;
@@ -82,7 +84,7 @@ logger.log("dev key taskMap");
 
 const AppLayout: FC<IProps> = ({ children }) => {
   useEffect(() => {
-    if(!window) return;
+    if (!window) return;
     layout.remFlexible(window);
     logger.log("process.env", process.env);
     const task = reactiveX.createTimerTask({

@@ -1,6 +1,6 @@
 import Head from 'next/head'
 
-const boxStyles = { padding: '12px', border: '1px solid #eaeaea', borderRadius: '10px' };
+const boxStyles = { padding: '.12rem', border: '.01rem solid #eaeaea', borderRadius: '.1rem' };
 export default function Home() {
     return (
         <div>
@@ -16,7 +16,7 @@ export default function Home() {
                 justifyContent: 'center',
                 alignItems: 'center',
             }}>
-                <h1 style={{ fontSize: '64px' }}>
+                <h1 style={{ fontSize: '.64rem' }}>
                     <svg style={{
                         height: '1em'
                     }} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 44">
@@ -30,7 +30,7 @@ export default function Home() {
                 <button type="button" style={{
                     ...boxStyles,
                     backgroundColor: '#c73852',
-                    borderRadius: '12px',
+                    borderRadius: '.12rem',
                     border: 'none'
                 }} onClick={() => {
                     throw new Error("Sentry Frontend Error");

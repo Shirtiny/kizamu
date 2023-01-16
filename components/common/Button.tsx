@@ -15,11 +15,11 @@ const StyledButton = styled.button<Partial<IStyledProps>>`
   cursor: pointer;
   user-select: none;
   touch-action: manipulation;
-  border: 1px solid transparent;
+  border: .01rem solid transparent;
   border-color: #d9d9d9;
   background: #fff;
-  border-radius: 2px;
-  box-shadow: 0 2px #00000004;
+  border-radius: .02rem;
+  box-shadow: 0 .02rem #00000004;
   color: #000000d9;
   font-weight: 400;
   transition: all 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
@@ -31,8 +31,8 @@ const StyledButton = styled.button<Partial<IStyledProps>>`
   }
 
   &.size-middle {
-    padding: 2px 6px;
-    font-size: 18px;
+    padding: .02rem .06rem;
+    font-size: .18rem;
   }
 `;
 

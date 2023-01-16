@@ -16,7 +16,7 @@ export default function RootLayout({
           content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no"
         />
       </head>
-      <body className="root-app-layout __plain_text_READY__">
+      <body className="root-app-layout">
         <AppLayout>{children}</AppLayout>
       </body>
     </html>

@@ -6,7 +6,7 @@ import TickAside from "../../components/tick/Aside";
 const StyledTickAppLayout = styled.div`
   height: 100vh;
   width: 100vw;
-  padding: 32px 24px;
+  padding: .32rem .24rem;
   overflow: auto;
   background-color: var(--color-primary-background-color-dark);
   transition: background-color 0.4s ease-in-out;
@@ -16,10 +16,10 @@ const StyledTickAppLayout = styled.div`
     display: flex;
     background-color: var(--color-primary-background-color);
     transition: background-color 0.4s ease-in-out;
-    box-shadow: rgba(0, 0, 0, 0.25) 0px 25px 50px -12px;
+    box-shadow: rgba(0, 0, 0, 0.25) 0rem .25rem .5rem -0.12rem;
 
     .aside {
-      width: 100px;
+      width: 1rem;
     }
 
     .main {
