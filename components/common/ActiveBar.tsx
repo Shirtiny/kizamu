@@ -101,10 +101,10 @@ const StyledActiveBar = styled(animated.div)`
   top: 0;
   right: 0;
   background-color: var(--color-primary);
-  width: .03rem;
+  width: 0.03rem;
   /* height: 0rem; */
   /* height: .9rem; */
-  border-radius: .03rem;
+  border-radius: 0.03rem;
   transition: background-color 0.4s ease-in-out;
 `;
 
@@ -159,6 +159,26 @@ const ActiveBar: FC<IActiveBarProps> = ({
     },
   }));
 
+  const switchActiveBar = useCallback(
+    ({ currentActiveKey, immediately = false }: any) => {
+      logger.debug("switch activeBar", { currentActiveKey });
+      const container = elRef.current?.parentElement;
+      if (!container) return;
+      const currentActiveNode =
+        currentActiveKey &&
+        container.querySelector(
+          createBarItemSelector(activeKeyAttributeName, currentActiveKey)
+        );
+      if (!currentActiveNode) return;
+      // update spring
+
+      immediately
+        ? springApi.set(calcBarStyle(currentActiveNode as HTMLElement))
+        : springApi.start(calcBarStyle(currentActiveNode as HTMLElement));
+    },
+    [activeKeyAttributeName, springApi]
+  );
+
   useActiveBarListener({
     elRef,
     springApi,
@@ -168,18 +188,15 @@ const ActiveBar: FC<IActiveBarProps> = ({
 
   // current active
   useEffect(() => {
-    logger.debug("switch activeBar", { currentActiveKey });
-    const container = elRef.current?.parentElement;
-    if (!container) return;
-    const currentActiveNode =
-      currentActiveKey &&
-      container.querySelector(
-        createBarItemSelector(activeKeyAttributeName, currentActiveKey)
-      );
-    // update spring
-    currentActiveNode &&
-      springApi.start(calcBarStyle(currentActiveNode as HTMLElement));
-  }, [activeKeyAttributeName, currentActiveKey, springApi]);
+    switchActiveBar({ currentActiveKey });
+    const onResize = () => {
+      switchActiveBar({ currentActiveKey, immediately: true });
+    };
+    window.addEventListener("resize", onResize);
+    return () => {
+      window.removeEventListener("resize", onResize);
+    };
+  }, [currentActiveKey, switchActiveBar]);
 
   return (
     <StyledActiveBar ref={loadRef} style={{ ...styles }}></StyledActiveBar>
