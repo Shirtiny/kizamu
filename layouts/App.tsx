@@ -10,6 +10,7 @@ import "modern-normalize/modern-normalize.css";
 import "@fontsource/lexend";
 import "@fontsource/chilanka";
 import "@fontsource/jetbrains-mono";
+import layout from "../utils/layout";
 
 const GlobalStyle = createGlobalStyle`
  html {
@@ -81,6 +82,7 @@ logger.log("dev key taskMap");
 
 const AppLayout: FC<IProps> = ({ children }) => {
   useEffect(() => {
+    layout.remFlexible(window);
     logger.log("process.env", process.env);
     const task = reactiveX.createTimerTask({
       name: "themeSwitchTimer",

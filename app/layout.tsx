@@ -1,7 +1,8 @@
 import dynamic from "next/dynamic";
+import AppLayout from "../layouts/App";
 import "nprogress/nprogress.css";
 
-const AppLayout = dynamic(() => import("../layouts/App"), { ssr: false });
+// const AppLayout = dynamic(() => import(), { ssr: false });
 
 export default function RootLayout({
   children,
@@ -15,9 +16,8 @@ export default function RootLayout({
           name="viewport"
           content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no"
         />
-        <script defer src="./js/rem.js"></script>
       </head>
-      <body className="root-app-layout">
+      <body className="root-app-layout __plain_text_READY__">
         <AppLayout>{children}</AppLayout>
       </body>
     </html>
