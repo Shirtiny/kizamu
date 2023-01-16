@@ -82,6 +82,7 @@ logger.log("dev key taskMap");
 
 const AppLayout: FC<IProps> = ({ children }) => {
   useEffect(() => {
+    if(!window) return;
     layout.remFlexible(window);
     logger.log("process.env", process.env);
     const task = reactiveX.createTimerTask({

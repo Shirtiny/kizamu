@@ -1,8 +1,7 @@
 import dynamic from "next/dynamic";
-import AppLayout from "../layouts/App";
 import "nprogress/nprogress.css";
 
-// const AppLayout = dynamic(() => import(), { ssr: false });
+const AppLayout = dynamic(() => import("../layouts/App"), { ssr: false });
 
 export default function RootLayout({
   children,

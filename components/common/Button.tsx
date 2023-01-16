@@ -31,8 +31,8 @@ const StyledButton = styled.button<Partial<IStyledProps>>`
   }
 
   &.size-middle {
-    padding: 0.125rem 0.375rem;
-    font-size: 1.125rem;
+    padding: 2px 6px;
+    font-size: 18px;
   }
 `;
 

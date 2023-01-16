@@ -11,8 +11,8 @@ const StyledAside = styled.div<IStyledAsideProps>`
   height: 100%;
   display: flex;
   flex-direction: column;
-  border: 0.0625rem solid #e8e8e8;
-  padding: 3.125rem 0 4.375rem;
+  border: 1px solid #e8e8e8;
+  padding: 50px 0 70px;
   .menu {
     text-align: center;
   }
@@ -22,7 +22,7 @@ const StyledAside = styled.div<IStyledAsideProps>`
     flex-direction: column;
     text-align: center;
     & > :not(:last-child) {
-      margin-bottom: 1.5rem;
+      margin-bottom: 24px;
     }
   }
 `;

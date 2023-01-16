@@ -16,7 +16,7 @@ export default function Home() {
                 justifyContent: 'center',
                 alignItems: 'center',
             }}>
-                <h1 style={{ fontSize: '4rem' }}>
+                <h1 style={{ fontSize: '64px' }}>
                     <svg style={{
                         height: '1em'
                     }} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 44">

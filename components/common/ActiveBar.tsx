@@ -101,10 +101,10 @@ const StyledActiveBar = styled(animated.div)`
   top: 0;
   right: 0;
   background-color: var(--color-primary);
-  width: 0.1875rem;
-  /* height: 0rem; */
-  /* height: 5.625rem; */
-  border-radius: 0.1875rem;
+  width: 3px;
+  /* height: 0px; */
+  /* height: 90px; */
+  border-radius: 3px;
   transition: background-color 0.4s ease-in-out;
 `;
 

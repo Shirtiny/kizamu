@@ -1,10 +1,10 @@
 const once = { remFlexible: false };
 
-function remFlexible(window: Window) {
-  if (once.remFlexible || !window) return;
-  const { document } = window;
+function remFlexible(win: Window) {
+  if (once.remFlexible || !win) return;
+  const { document } = win;
   const docEl = document.documentElement;
-  const dpr = window.devicePixelRatio || 1;
+  const dpr = win.devicePixelRatio || 1;
 
   // 720p: 1280*720   unit = 1280/16px = 80
   // 1080p: 1920*1080   unit = 1920/16px = 120
@@ -12,8 +12,8 @@ function remFlexible(window: Window) {
   const baseWidth = 1920;
   // 以某个fontSize的值为基准
   const baseFontSize = 16;
-  // baseWidth减小至920
-  const minWidth = 720;
+  // baseWidth减小至1000
+  const minWidth = 1000;
   // 对整体基准值进行缩放
   const scale = minWidth / baseWidth;
   const baseRemRate = (baseWidth * scale) / baseFontSize;
@@ -36,8 +36,8 @@ function remFlexible(window: Window) {
   setRemUnit();
 
   // reset rem unit on page resize
-  window.addEventListener("resize", setRemUnit);
-  window.addEventListener("pageshow", function (e) {
+  win.addEventListener("resize", setRemUnit);
+  win.addEventListener("pageshow", function (e) {
     if (e.persisted) {
       setRemUnit();
     }

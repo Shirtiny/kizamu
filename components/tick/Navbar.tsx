@@ -11,7 +11,7 @@ import { IRoute } from "../../router/type";
 const StyledNavbar = styled.div`
   position: relative;
   flex: 1;
-  margin: 4.375rem 0;
+  margin: 70px 0;
   text-align: center;
   overflow-y: auto;
   .nav-item {
@@ -21,12 +21,12 @@ const StyledNavbar = styled.div`
     display: inline-flex;
     justify-content: center;
     align-items: center;
-    height: 4.6875rem;
-    width: 4.6875rem;
+    height: 75px;
+    width: 75px;
     white-space: nowrap;
     transform: rotate(-90deg);
     color: var(--color-primary-text);
-    letter-spacing: 0.0625rem;
+    letter-spacing: 1px;
     font-family: "Lexend", sans-serif;
     text-transform: capitalize;
     transition: color 0.4s ease-in-out;
@@ -34,7 +34,7 @@ const StyledNavbar = styled.div`
         text-transform: uppercase;
       } */
     &:not(:last-child) {
-      margin-bottom: 2rem;
+      margin-bottom: 32px;
     }
     &.active {
       color: var(--color-primary);
@@ -45,9 +45,9 @@ const StyledNavbar = styled.div`
         content: "";
         position: absolute;
         top: 38%;
-        right: 0.5rem;
-        width: 0.5rem;
-        height: 0.5rem;
+        right: 8px;
+        width: 8px;
+        height: 8px;
         border-radius: 50%;
         background-color: var(--color-primary);
       }
