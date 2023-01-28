@@ -1,6 +1,5 @@
 import {
   FC,
-  memo,
   useCallback,
   useEffect,
   useMemo,
@@ -13,6 +12,7 @@ import { kebabCase, camelCase } from "lodash";
 import lang from "@shirtiny/utils/lib/lang";
 import logger from "@/utils/logger";
 import inject from "@/hoc/inject";
+import component from "@/hoc/component";
 
 const ATTRIBUTE_SUFFIX = "item";
 
@@ -107,14 +107,14 @@ const StyledActiveBar = styled(animated.div)`
   transition: background-color 0.4s ease-in-out;
 `;
 
-interface IActiveBarProps {
+interface IProps {
   activeKeyDataSetName?: string;
   currentActiveIndex?: string | number;
   auto?: boolean;
   onActiveEnd?: Function;
 }
 
-const ActiveBar: FC<IActiveBarProps> = ({
+const ActiveBar: FC<IProps> = ({
   activeKeyDataSetName = "active-bar-key",
   currentActiveIndex,
   auto = false,
@@ -202,7 +202,7 @@ const ActiveBar: FC<IActiveBarProps> = ({
   );
 };
 
-export default memo(
+export default component<IProps>(
   inject(ActiveBar, (props) => {
     return { activeKeyDataSetName: camelCase(props.activeKeyDataSetName) };
   })

@@ -16,7 +16,7 @@ class CustomerLogger extends ShLogger {
   component = (componentName: string, message: string,...data: any[]) => {
     this.formatShapeLog(
       {
-        level: 5, 
+        level: 8, 
         title: " COM :",
         color: "#6a51b2",
       },

@@ -1,14 +1,15 @@
-import { FC, Fragment, memo, Suspense } from "react";
+import { FC,  Suspense } from "react";
 import { Routes, Route } from "react-router-dom";
 import { IRoute } from "./type";
 import RouterLoading from "./Loading";
+import component from "@/hoc/component";
 
-interface IAppRouterProps {
+interface IProps {
   routes: IRoute[];
   routeComponentProps?: Object;
 }
 
-const AppRoutes: FC<IAppRouterProps> = ({
+const AppRoutes: FC<IProps> = ({
   routes,
   routeComponentProps = {},
 }) => {
@@ -31,4 +32,4 @@ const AppRoutes: FC<IAppRouterProps> = ({
   );
 };
 
-export default memo(AppRoutes);
+export default component<IProps>(AppRoutes);

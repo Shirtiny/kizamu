@@ -1,14 +1,15 @@
 'use client';
-import { FC, memo, useState } from "react";
+import { FC,  useState } from "react";
 import styled from "styled-components";
 // Import the Slate editor factory.
 import { createEditor, Descendant } from "slate";
 // Import the Slate components and React plugin.
 import { Slate, Editable, withReact } from "slate-react";
+import component from "@/hoc/component";
 
 const StyledEditor = styled.div``;
 
-interface IEditorProps {}
+interface IProps {}
 
 const initialValue: Descendant[] = [
   {
@@ -17,7 +18,7 @@ const initialValue: Descendant[] = [
   },
 ];
 
-const Editor: FC<IEditorProps> = () => {
+const Editor: FC<IProps> = () => {
   // Create a Slate editor object that won't change across renders.
   const [editor] = useState(() => withReact(createEditor()));
 
@@ -31,4 +32,4 @@ const Editor: FC<IEditorProps> = () => {
   );
 };
 
-export default memo(Editor);
+export default component<IProps>(Editor);

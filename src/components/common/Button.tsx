@@ -1,6 +1,7 @@
-import { FC, memo, MouseEventHandler, ReactNode } from "react";
+import { FC, MouseEventHandler, ReactNode } from "react";
 import styled from "styled-components";
 import { clsPainPattern } from "@shirtiny/utils/lib/style";
+import component from "@/hoc/component";
 
 interface IStyledProps {}
 
@@ -52,4 +53,4 @@ const Button: FC<IProps> = ({ children, type, size = "middle", onClick }) => {
   );
 };
 
-export default memo(Button);
+export default component<IProps>(Button);

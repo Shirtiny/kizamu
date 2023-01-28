@@ -6,6 +6,7 @@ import Link from "../common/Link";
 import ActiveBar from "../common/ActiveBar";
 import routerConfig from "@/router/config";
 import logger from "@/utils/logger";
+import component from "@/hoc/component";
 
 const StyledNavbar = styled.div`
   position: relative;
@@ -54,9 +55,9 @@ const StyledNavbar = styled.div`
   }
 `;
 
-interface INavbarProps {}
+interface IProps {}
 
-const Navbar: FC<INavbarProps> = () => {
+const Navbar: FC<IProps> = () => {
   const currentLocation = useLocation();
 
   const { currentActiveIndex } = useMemo(() => {
@@ -86,4 +87,4 @@ const Navbar: FC<INavbarProps> = () => {
   );
 };
 
-export default memo(Navbar);
+export default component<IProps>(Navbar);

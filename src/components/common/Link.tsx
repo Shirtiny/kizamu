@@ -1,17 +1,18 @@
-import { FC, memo, ReactNode, useCallback } from "react";
+import { FC, ReactNode, useCallback } from "react";
 import styled from "styled-components";
 import { useNavigate } from "react-router-dom";
+import component from "@/hoc/component";
 
 const StyledA = styled.a``;
 
-interface ILinkProps {
+interface IProps {
   className: string;
   href: string;
   children?: ReactNode;
   [attr: string]: any;
 }
 
-const Link: FC<ILinkProps> = ({
+const Link: FC<IProps> = ({
   className,
   href,
   children,
@@ -33,4 +34,4 @@ const Link: FC<ILinkProps> = ({
   );
 };
 
-export default memo(Link);
+export default component<IProps>(Link);

@@ -1,7 +1,10 @@
-import { FC, memo, useEffect } from "react";
+import { FC, useEffect } from "react";
 import nprogress from "nprogress";
+import component from "@/hoc/component";
 
-const RouterLoading: FC = () => {
+interface IProps {}
+
+const RouterLoading: FC<IProps> = () => {
   useEffect(() => {
     nprogress.start();
 
@@ -12,4 +15,4 @@ const RouterLoading: FC = () => {
   return <>loading</>;
 };
 
-export default memo(RouterLoading);
+export default component<IProps>(RouterLoading);

@@ -1,6 +1,6 @@
 import { FC } from "react";
 import styled from "styled-components";
-import Button from "../../src/components/common/Button";
+import Button from "@/components/common/Button";
 import component from "@/hoc/component";
 
 const StyledLatest = styled.div``;

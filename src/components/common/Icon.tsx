@@ -1,6 +1,7 @@
 import styled from "styled-components";
-import { memo, ReactNode, FC } from "react";
+import { ReactNode, FC } from "react";
 import { clsPainPattern } from "@shirtiny/utils/lib/style";
+import component from "@/hoc/component";
 
 const StyledIcon = styled.span`
   .react-icon {
@@ -31,4 +32,4 @@ const Icon: FC<IProps> = ({ Svg, size = "middle" }) => {
   return <StyledIcon className={className}>{Svg}</StyledIcon>;
 };
 
-export default memo(Icon);
+export default component<IProps>(Icon);
