@@ -1,12 +1,13 @@
-import { FC, memo } from "react";
+import { FC } from "react";
 import styled from "styled-components";
-import Button from "../../components/common/Button";
+import Button from "../../src/components/common/Button";
+import component from "@/hoc/component";
 
 const StyledLatest = styled.div``;
 
-interface ILatestProps {}
+interface IProps {}
 
-const Latest: FC<ILatestProps> = () => {
+const Latest: FC<IProps> = () => {
   return (
     <StyledLatest>
       Latest
@@ -21,4 +22,4 @@ const Latest: FC<ILatestProps> = () => {
   );
 };
 
-export default memo(Latest);
+export default component<IProps>(Latest);

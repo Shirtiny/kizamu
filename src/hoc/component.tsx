@@ -1,5 +1,5 @@
 import { FC, memo, useLayoutEffect, useEffect } from "react";
-import logger from "../utils/logger";
+import logger from "@/utils/logger";
 
 interface IOptions {
   memorize?: boolean;
@@ -16,11 +16,11 @@ export default function component<P>(
   const { memorize } = options;
   const Func: FC<P> = (props) => {
     useLayoutEffect(() => {
-      logger.component("AppLayout", "useLayoutEffect");
+      logger.component(Component.name, "useLayoutEffect");
     }, []);
 
     useEffect(() => {
-      logger.component("AppLayout", "useEffect", {
+      logger.component(Component.name, "useEffect", {
         ["process.env"]: process.env,
       });
     }, []);

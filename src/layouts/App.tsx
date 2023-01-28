@@ -1,7 +1,6 @@
 "use client";
 import {
   FC,
-  memo,
   ReactNode,
   useEffect,
   useCallback,
@@ -11,14 +10,14 @@ import { IconContext } from "react-icons/lib";
 import styled, { createGlobalStyle } from "styled-components";
 import reactiveX from "@shirtiny/utils/lib/reactiveX";
 import dev from "@shirtiny/utils/lib/dev";
-import theme, { ColorThemes } from "../styles/theme";
-import logger from "../utils/logger";
+import theme, { ColorThemes } from "@/styles/theme";
+import component from "@/hoc/component";
+import layout from "@/utils/layout";
+import logger from "@/utils/logger";
 import "modern-normalize/modern-normalize.css";
 import "@fontsource/lexend";
 import "@fontsource/chilanka";
 import "@fontsource/jetbrains-mono";
-import layout from "../utils/layout";
-import component from "../hoc/component";
 
 const GlobalStyle = createGlobalStyle`
     html,

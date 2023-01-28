@@ -1,5 +1,3 @@
-import { constSelector } from "recoil";
-
 export enum ColorThemes {
   FASHION = "fashion",
   MIKU = "miku",

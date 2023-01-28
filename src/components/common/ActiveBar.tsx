@@ -10,10 +10,9 @@ import {
 import styled from "styled-components";
 import { useSpring, animated, config, SpringRef } from "@react-spring/web";
 import { kebabCase, camelCase } from "lodash";
-import dom from "@shirtiny/utils/lib/dom";
 import lang from "@shirtiny/utils/lib/lang";
-import logger from "../../utils/logger";
-import inject from "../../hoc/inject";
+import logger from "@/utils/logger";
+import inject from "@/hoc/inject";
 
 const ATTRIBUTE_SUFFIX = "item";
 

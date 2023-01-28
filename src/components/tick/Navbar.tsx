@@ -1,17 +1,16 @@
-import { FC, memo, useCallback, useMemo, useState } from "react";
+import { FC, memo, useMemo } from "react";
 import styled from "styled-components";
-import { useLocation, useNavigate } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 import { cls } from "@shirtiny/utils/lib/style";
 import Link from "../common/Link";
 import ActiveBar from "../common/ActiveBar";
-import routerConfig from "../../router/config";
-import logger from "../../utils/logger";
-import { IRoute } from "../../router/type";
+import routerConfig from "@/router/config";
+import logger from "@/utils/logger";
 
 const StyledNavbar = styled.div`
   position: relative;
   flex: 1;
-  margin: .7rem 0;
+  margin: 0.7rem 0;
   text-align: center;
   overflow-y: auto;
   .nav-item {
@@ -21,12 +20,12 @@ const StyledNavbar = styled.div`
     display: inline-flex;
     justify-content: center;
     align-items: center;
-    height: .75rem;
-    width: .75rem;
+    height: 0.75rem;
+    width: 0.75rem;
     white-space: nowrap;
     transform: rotate(-90deg);
     color: var(--color-primary-text);
-    letter-spacing: .01rem;
+    letter-spacing: 0.01rem;
     font-family: "Lexend", sans-serif;
     text-transform: capitalize;
     transition: color 0.4s ease-in-out;
@@ -34,7 +33,7 @@ const StyledNavbar = styled.div`
         text-transform: uppercase;
       } */
     &:not(:last-child) {
-      margin-bottom: .32rem;
+      margin-bottom: 0.32rem;
     }
     &.active {
       color: var(--color-primary);
@@ -45,9 +44,9 @@ const StyledNavbar = styled.div`
         content: "";
         position: absolute;
         top: 38%;
-        right: .08rem;
-        width: .08rem;
-        height: .08rem;
+        right: 0.08rem;
+        width: 0.08rem;
+        height: 0.08rem;
         border-radius: 50%;
         background-color: var(--color-primary);
       }

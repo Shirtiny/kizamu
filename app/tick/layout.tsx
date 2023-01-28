@@ -1,7 +1,7 @@
 "use client";
 import { HashRouter } from "react-router-dom";
 import styled from "styled-components";
-import TickAside from "../../components/tick/Aside";
+import TickAside from "@/components/tick/Aside";
 
 const StyledTickAppLayout = styled.div`
   height: 100vh;

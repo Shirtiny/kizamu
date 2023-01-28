@@ -7,7 +7,7 @@ const tick: IRoute[] = [
     key: "latest",
     path: "/latest",
     label: "latest",
-    Component: lazy(() => import("../app/tick/Latest")),
+    Component: lazy(() => import("../../app/tick/Latest")),
   },
   {
     key: "gallery",
