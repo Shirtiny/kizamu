@@ -1,19 +1,21 @@
 const once = { remFlexible: false };
 
-function remFlexible(win: Window) {
+function remFlexible(
+  win: Window,
+  // 720p: 1280*720   unit = 1280/16px = 80
+  // 1080p: 1920*1080   unit = 1920/16px = 120
+  // 以某个分辨率宽度为基准 通过baseWidth计算remRate 且低于baseWidth时不进行缩放
+  baseWidth: number = 1920,
+  // 以某个fontSize的值为基准
+  baseFontSize: number = 100,
+  // baseWidth减小至minWidth
+  minWidth: number = 1000
+) {
   if (once.remFlexible || !win) return;
   const { document } = win;
   const docEl = document.documentElement;
   const dpr = win.devicePixelRatio || 1;
 
-  // 720p: 1280*720   unit = 1280/16px = 80
-  // 1080p: 1920*1080   unit = 1920/16px = 120
-  // 以某个分辨率宽度为基准 通过baseWidth计算remRate 且低于baseWidth时不进行缩放
-  const baseWidth = 1920;
-  // 以某个fontSize的值为基准
-  const baseFontSize = 100;
-  // baseWidth减小至1000
-  const minWidth = 1000;
   // 对整体基准值进行缩放
   const scale = minWidth / baseWidth;
   const baseRemRate = (baseWidth * scale) / baseFontSize;

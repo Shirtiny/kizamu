@@ -18,6 +18,7 @@ import "@fontsource/lexend";
 import "@fontsource/chilanka";
 import "@fontsource/jetbrains-mono";
 import layout from "../utils/layout";
+import component from "../hoc/component";
 
 const GlobalStyle = createGlobalStyle`
     html,
@@ -91,20 +92,15 @@ logger.log("dev key taskMap");
 
 const AppLayout: FC<IProps> = ({ children }) => {
   const loadRef = useCallback((node: HTMLDivElement) => {
-    logger.log("loadRef", node);
-    if (!window) return;
-    // layout.remFlexible(window);
+    logger.component("AppLayout", "loadRef", node);
   }, []);
 
   useLayoutEffect(() => {
-    logger.log("useLayoutEffect");
     if (!window) return;
-    layout.remFlexible(window);
+    layout.remFlexible(window, 1920, 100, 1000);
   }, []);
 
   useEffect(() => {
-    logger.log("useEffect process.env", process.env);
-
     const task = reactiveX.createTimerTask({
       name: "themeSwitchTimer",
       sec: 5,
@@ -118,6 +114,7 @@ const AppLayout: FC<IProps> = ({ children }) => {
     });
     task.start();
   }, []);
+
   return (
     <StyledAppLayout ref={loadRef}>
       <GlobalStyle />
@@ -128,4 +125,4 @@ const AppLayout: FC<IProps> = ({ children }) => {
   );
 };
 
-export default memo(AppLayout);
+export default component<IProps>(AppLayout);

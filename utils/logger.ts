@@ -12,6 +12,19 @@ class CustomerLogger extends ShLogger {
       [...nodes]
     );
   };
+
+  component = (componentName: string, message: string,...data: any[]) => {
+    this.formatShapeLog(
+      {
+        level: 5, 
+        title: " COM :",
+        color: "#6a51b2",
+      },
+      componentName,
+      message,
+      data
+    );
+  };
 }
 
 const logger = new CustomerLogger();
