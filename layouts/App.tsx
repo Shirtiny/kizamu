@@ -1,5 +1,5 @@
 "use client";
-import { FC, memo, ReactNode, useEffect } from "react";
+import { FC, memo, ReactNode, useEffect, useCallback } from "react";
 import { IconContext } from "react-icons/lib";
 import styled, { createGlobalStyle } from "styled-components";
 import reactiveX from "@shirtiny/utils/lib/reactiveX";
@@ -83,9 +83,12 @@ interface IProps {
 logger.log("dev key taskMap");
 
 const AppLayout: FC<IProps> = ({ children }) => {
-  useEffect(() => {
+  const loadRef = useCallback((node: HTMLDivElement) => {
     if (!window) return;
     layout.remFlexible(window);
+  }, []);
+
+  useEffect(() => {
     logger.log("process.env", process.env);
     const task = reactiveX.createTimerTask({
       name: "themeSwitchTimer",
@@ -101,7 +104,7 @@ const AppLayout: FC<IProps> = ({ children }) => {
     task.start();
   }, []);
   return (
-    <StyledAppLayout>
+    <StyledAppLayout ref={loadRef}>
       <GlobalStyle />
       <IconContext.Provider value={{ className: "react-icon", style: {} }}>
         {children}
