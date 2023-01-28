@@ -22,7 +22,7 @@ class CustomerLogger extends ShLogger {
       },
       componentName,
       message,
-      data
+      ...data
     );
   };
 }

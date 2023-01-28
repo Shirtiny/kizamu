@@ -16,3 +16,5 @@ const RouterLoading: FC<IProps> = () => {
 };
 
 export default component<IProps>(RouterLoading);
+
+// TODO: git info version

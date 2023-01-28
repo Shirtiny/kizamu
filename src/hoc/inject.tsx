@@ -5,10 +5,11 @@ export default function inject<P>(
   Component: FC<P>,
   injector = (props: any) => ({})
 ) {
-  const Func: FC<P> = (props: any) => {
+  const Inject: FC<P> = (props: any) => {
     return <Component {...props} {...() => injector(props)} />;
   };
-  Object.assign(Func, Component);
-  Func.displayName = `${Component.displayName || Component.name}Injector`;
-  return Func;
+  Object.assign(Inject, Component);
+  Inject.displayName = `${Component.displayName || Component.name}Injector`;
+
+  return Inject;
 }
