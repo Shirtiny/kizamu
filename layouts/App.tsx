@@ -84,12 +84,15 @@ logger.log("dev key taskMap");
 
 const AppLayout: FC<IProps> = ({ children }) => {
   const loadRef = useCallback((node: HTMLDivElement) => {
+    logger.log("loadRef", node);
     if (!window) return;
-    layout.remFlexible(window);
+    // layout.remFlexible(window);
   }, []);
 
   useEffect(() => {
-    logger.log("process.env", process.env);
+    logger.log("useEffect process.env", process.env);
+    if (!window) return;
+    layout.remFlexible(window);
     const task = reactiveX.createTimerTask({
       name: "themeSwitchTimer",
       sec: 5,
