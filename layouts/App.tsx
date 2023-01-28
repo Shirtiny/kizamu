@@ -1,5 +1,12 @@
 "use client";
-import { FC, memo, ReactNode, useEffect, useCallback } from "react";
+import {
+  FC,
+  memo,
+  ReactNode,
+  useEffect,
+  useCallback,
+  useLayoutEffect,
+} from "react";
 import { IconContext } from "react-icons/lib";
 import styled, { createGlobalStyle } from "styled-components";
 import reactiveX from "@shirtiny/utils/lib/reactiveX";
@@ -89,10 +96,15 @@ const AppLayout: FC<IProps> = ({ children }) => {
     // layout.remFlexible(window);
   }, []);
 
-  useEffect(() => {
-    logger.log("useEffect process.env", process.env);
+  useLayoutEffect(() => {
+    logger.log("useLayoutEffect");
     if (!window) return;
     layout.remFlexible(window);
+  }, []);
+
+  useEffect(() => {
+    logger.log("useEffect process.env", process.env);
+
     const task = reactiveX.createTimerTask({
       name: "themeSwitchTimer",
       sec: 5,
