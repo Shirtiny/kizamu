@@ -14,13 +14,14 @@ export default function component<P>(
   options: IOptions = defaultOptions
 ) {
   const { memorize } = options;
+  const componentName = Component.displayName || Component.name
   const Func: FC<P> = (props) => {
     useLayoutEffect(() => {
-      logger.component(Component.name, "useLayoutEffect");
+      logger.component(componentName, "useLayoutEffect");
     }, []);
 
     useEffect(() => {
-      logger.component(Component.name, "useEffect", {
+      logger.component(componentName, "useEffect", {
         ["process.env"]: process.env,
       });
     }, []);
@@ -29,6 +30,6 @@ export default function component<P>(
   };
   Object.assign(Func, Component);
  
-  Func.displayName = `${Component.displayName || Component.name}Wrapper`;
+  Func.displayName = `${componentName}Wrapper`;
   return memorize ? memo(Func) : Func;
 }
