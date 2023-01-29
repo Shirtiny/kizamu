@@ -1,5 +1,6 @@
 import versionInfo from "../../public/version.json5";
-import { ShLogger, css } from "@shirtiny/logger";
+import { ShLogger, css, LEVELS } from "@shirtiny/logger";
+import env from "./env";
 
 class CustomerLogger extends ShLogger {
   doms = (message: string, ...nodes: any[]) => {
@@ -45,7 +46,7 @@ class CustomerLogger extends ShLogger {
         {
           str: tag,
           style: css`
-            background-color: #292F4C;
+            background-color: #292f4c;
             color: white;
             padding: 2px 5px;
           `,
@@ -60,7 +61,13 @@ class CustomerLogger extends ShLogger {
   };
 }
 
-const logger = new CustomerLogger();
+const logger = new CustomerLogger({
+  level: LEVELS.debug,
+});
+
+if (env.isDev()) {
+  logger.setLevel(8);
+}
 
 versionInfo &&
   logger.customVersion(
