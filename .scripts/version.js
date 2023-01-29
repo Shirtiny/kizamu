@@ -3,8 +3,15 @@ const json5 = require("json5");
 const { promises: fsP } = require("fs");
 const getRepoInfo = require("git-repo-info");
 
+const versionFilePath = path.resolve(__dirname, "../public/version.json5");
+
 const run = async () => {
   const git = getRepoInfo();
+  const isExist = (await fsP.stat(versionFilePath)).isFile();
+  console.log("versionFilePath", versionFilePath);
+  console.log("is versionFile exist", isExist);
+
+  if (!git.lastTag && access) return;
 
   git.branch; // current branch
   git.sha; // current sha
@@ -31,12 +38,12 @@ const run = async () => {
   );
   // package.version = git.lastTag || package.version; // current version
 
-  const versionInfo = { git,  package };
+  const versionInfo = { git, package };
 
   console.log("Get version info:\n", versionInfo);
 
   await fsP.writeFile(
-    path.resolve(__dirname, "../public/version.json5"),
+    versionFilePath,
     json5.stringify(versionInfo, null, 2),
     "utf8"
   );
