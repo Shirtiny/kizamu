@@ -8,6 +8,6 @@ if (!shell.which("git")) {
   shell.exit(1);
 }
 
-shell.exec("git remote");
-// shell.exec("git pull origin --tags");
+shell.exec("git remote add origin https://github.com/Shirtiny/kizamu.git");
+shell.exec("git pull origin --tags");
 shell.exec("node .scripts/version.js");
