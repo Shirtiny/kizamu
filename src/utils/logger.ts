@@ -29,7 +29,7 @@ class CustomerLogger extends ShLogger {
   };
 
   customVersion = (name: string, tag: string, sha: string, ...data: any[]) => {
-    const level = 4;
+    const level = 0;
     this.customFormat(
       level,
       [
@@ -66,8 +66,10 @@ const logger = new CustomerLogger({
 });
 
 if (env.isDev()) {
-  logger.setLevel(8);
+  logger.setLevel(39);
 }
+
+logger.log(process.env.NODE_ENV, logger.getLoggerOption());
 
 versionInfo &&
   logger.customVersion(
