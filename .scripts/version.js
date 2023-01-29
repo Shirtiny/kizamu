@@ -11,7 +11,7 @@ const run = async () => {
   console.log("versionFilePath", versionFilePath);
   console.log("is versionFile exist", isExist);
 
-  if (!git.lastTag && access) return;
+  if (!git.lastTag && isExist) return;
 
   git.branch; // current branch
   git.sha; // current sha
