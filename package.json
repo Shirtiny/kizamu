@@ -5,7 +5,6 @@
   "scripts": {
     "dev": "next dev",
     "postinstall": "node ./.scripts/init.js",
-    "prebuild": "node ./.scripts/init.js",
     "build": "next build",
     "preexport": "yarn build",
     "export": "next export",

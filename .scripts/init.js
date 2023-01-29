@@ -8,4 +8,5 @@ if (!shell.which("git")) {
   shell.exit(1);
 }
 
+shell.exec("git pull --tags");
 shell.exec("node .scripts/version.js");
