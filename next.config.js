@@ -1,6 +1,8 @@
 /** @type {import('next').NextConfig} */
-
 const { withSentryConfig } = require("@sentry/nextjs");
+const json5 = require("json5");
+const yaml = require("yaml");
+const toml = require('toml');
 
 const { DEPLOY_ENV, NODE_ENV } = process.env;
 
@@ -23,6 +25,7 @@ const deployEnv = deployEnvs[DEPLOY_ENV || "DEFAULT"];
 console.log("Deploy Env: ", deployEnv);
 
 const nextConfig = {
+  swcMinify: true,
   experimental: {
     appDir: true,
   },
@@ -36,6 +39,9 @@ const nextConfig = {
       displayName: true,
       fileName: false,
     },
+    // The regexes defined here are processed in Rust so the syntax is different from
+    // JavaScript `RegExp`s. See https://docs.rs/regex.
+    reactRemoveProperties: { properties: ["^data-custom$"] },
   },
   reactStrictMode: true,
   images: {
@@ -67,6 +73,43 @@ const nextConfig = {
         permanent: false,
       },
     ];
+  },
+  webpack: (config, options) => {
+    config.module.rules.push(
+      {
+        test: /\.toml$/,
+        type: "json",
+        parser: {
+          parse: toml.parse,
+        },
+      },
+      {
+        test: /\.json5$/,
+        type: "json",
+        parser: {
+          parse: json5.parse,
+        },
+      },
+      {
+        test: /\.yaml$/,
+        type: "json",
+        parser: {
+          parse: yaml.parse,
+        },
+      },
+      // {
+      //   test: /\.mdx/,
+      //   use: [
+      //     options.defaultLoaders.babel,
+      //     {
+      //       loader: '@mdx-js/loader',
+      //       options: pluginOptions.options,
+      //     },
+      //   ],
+      // }
+    );
+
+    return config;
   },
 };
 

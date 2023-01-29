@@ -1,4 +1,5 @@
-import { ShLogger } from "@shirtiny/logger";
+import versionInfo from "../../public/version.json5";
+import { ShLogger, css } from "@shirtiny/logger";
 
 class CustomerLogger extends ShLogger {
   doms = (message: string, ...nodes: any[]) => {
@@ -13,10 +14,10 @@ class CustomerLogger extends ShLogger {
     );
   };
 
-  component = (componentName: any, message: string,...data: any[]) => {
+  component = (componentName: any, message: string, ...data: any[]) => {
     this.formatShapeLog(
       {
-        level: 8, 
+        level: 8,
         title: " COM :",
         color: "#6a51b2",
       },
@@ -25,8 +26,47 @@ class CustomerLogger extends ShLogger {
       ...data
     );
   };
+
+  customVersion = (name: string, tag: string, sha: string, ...data: any[]) => {
+    const level = 4;
+    this.customFormat(
+      level,
+      [
+        {
+          str: name,
+          style: css`
+            background: linear-gradient(to right, #009fff, #ec2f4b);
+            color: white;
+            padding: 2px 5px;
+            border-top-left-radius: 3px;
+            border-bottom-left-radius: 3px;
+          `,
+        },
+        {
+          str: tag,
+          style: css`
+            background-color: #292F4C;
+            color: white;
+            padding: 2px 5px;
+          `,
+        },
+        {
+          str: " " + sha,
+          style: css``,
+        },
+      ],
+      ...data
+    );
+  };
 }
 
 const logger = new CustomerLogger();
+
+versionInfo &&
+  logger.customVersion(
+    versionInfo.package.name,
+    versionInfo.git.lastTag,
+    versionInfo.git.abbreviatedSha
+  );
 
 export default logger;
