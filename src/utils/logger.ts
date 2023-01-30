@@ -77,6 +77,8 @@ class CustomerLogger extends ShLogger {
             padding: 2px 5px;
             border-top-left-radius: 3px;
             border-bottom-left-radius: 3px;
+            border: 1px solid rgba(0, 0, 0, 0.06);
+            border-right: none;
           `,
         },
         {
@@ -85,7 +87,8 @@ class CustomerLogger extends ShLogger {
             background-color: #fff;
             color: #333;
             padding: 2px 5px;
-            border-right: 1px solid rgba(0, 0, 0, 0.06);
+            border: 1px solid rgba(0, 0, 0, 0.06);
+            border-left: none;
           `,
         },
         // https://giphy.com/explore/console
