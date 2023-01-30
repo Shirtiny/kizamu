@@ -87,6 +87,8 @@ class CustomerLogger extends ShLogger {
             background-color: #fff;
             color: #333;
             padding: 2px 5px;
+            border-top-right-radius: 3px;
+            border-bottom-right-radius: 3px;
             border: 1px solid rgba(0, 0, 0, 0.06);
             border-left: none;
           `,
