@@ -41,6 +41,7 @@ class CustomerLogger extends ShLogger {
     ...data: any[]
   ) => {
     const level = 0;
+
     const blob = await (await fetch(miku)).blob();
     const url = await read((reader) => {
       reader.readAsDataURL(blob);
@@ -108,6 +109,10 @@ class CustomerLogger extends ShLogger {
 
 const logger = new CustomerLogger({
   level: LEVELS.debug,
+  log: (...args: any[]) => {
+    if (!env.isBrowser()) return;
+    return console.log(...args);
+  },
 });
 
 if (env.isDev()) {
