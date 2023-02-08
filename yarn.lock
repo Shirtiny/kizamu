@@ -570,10 +570,10 @@
     "@sentry/cli" "^1.74.6"
     webpack-sources "^2.0.0 || ^3.0.0"
 
-"@shirtiny/logger@^3.0.1":
-  version "3.0.1"
-  resolved "https://registry.yarnpkg.com/@shirtiny/logger/-/logger-3.0.1.tgz#b7042e01bb6bb6d513287244fb7a355f3e052989"
-  integrity sha512-qBeGHqvd3BCT39x4XTtbDwQCTEJpA3OQ5NhPpYKTuenXTPZ64/QpSpy21ADE3YQf1dLaYdCvGzq+4F4jcK8YiA==
+"@shirtiny/logger@^3.2.0":
+  version "3.2.0"
+  resolved "https://registry.yarnpkg.com/@shirtiny/logger/-/logger-3.2.0.tgz#318ebe53988c75690431e7f4fa961c6550d84109"
+  integrity sha512-eX8PiskT6by1WdS8MDfkpL/fQ4kKRtORoaif9+h4gE9fC4pk1exx7SGusHopaB2aHWU0cq4JKfH2d6xyn/q7bg==
 
 "@shirtiny/utils@^0.2.4":
   version "0.2.4"

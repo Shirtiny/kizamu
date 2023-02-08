@@ -21,7 +21,7 @@
     "@react-spring/web": "^9.5.2",
     "@sentry/nextjs": "^7.21.1",
     "@sentry/tracing": "^7.29.0",
-    "@shirtiny/logger": "^3.0.1",
+    "@shirtiny/logger": "^3.2.0",
     "@shirtiny/utils": "^0.2.4",
     "lodash": "^4.17.21",
     "modern-normalize": "^1.1.0",
