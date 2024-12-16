@@ -63,10 +63,21 @@ Enjoy it!
 
 ## 🧞 Commands
 
-| Command        | Action                                       |
-| :------------- | :------------------------------------------- |
-| `pnpm i`       | Installs dependencies                        |
-| `pnpm dev`     | Starts local dev server at `localhost:4321`  |
-| `pnpm build`   | Build your production site to `./dist/`      |
-| `pnpm preview` | Preview your build locally, before deploying |
-| `pnpm format`  | Format code using Prettier                   |
+| Command           | Action                                       |
+| :---------------- | :------------------------------------------- |
+| `corepack enable` | 启用corepack                                 |
+| `pnpm i`          | Installs dependencies                        |
+| `pnpm dev`        | Starts local dev server at `localhost:4321`  |
+| `pnpm build`      | Build your production site to `./dist/`      |
+| `pnpm preview`    | Preview your build locally, before deploying |
+| `pnpm format`     | Format code using Prettier                   |
+
+## 其他
+
+```bash
+corepack enable
+npm view pnpm versions
+npm view pnpm@latest version engines
+corepack use pnpm@latest
+
+```
