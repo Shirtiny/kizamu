@@ -1,10 +1,11 @@
 {
-  "name": "astro-gyoza",
+  "name": "astro-kizamu",
   "type": "module",
   "version": "0.0.3",
   "scripts": {
-    "prepare": "pnpm exec simple-git-hooks",
+    "prepare": "node ./.scripts/init.cjs",
     "dev": "astro dev",
+    "prebuild": "node ./.scripts/init.cjs",
     "build": "astro check && astro build && pagefind --site dist",
     "preview": "astro preview",
     "astro": "astro",
@@ -22,6 +23,8 @@
     "@astrojs/tailwind": "^5.1.0",
     "@radix-ui/react-dialog": "^1.0.5",
     "@shikijs/rehype": "^1.3.0",
+    "@shirtiny/logger": "^5.0.0",
+    "@shirtiny/utils": "^3.1.0",
     "@swup/astro": "^1.4.1",
     "@types/chroma-js": "^2.4.4",
     "@types/lodash-es": "^4.17.12",
@@ -54,10 +57,13 @@
     "@commitlint/cli": "^19.3.0",
     "@commitlint/config-conventional": "^19.2.2",
     "@inquirer/prompts": "^5.0.2",
+    "ci-info": "^4.1.0",
+    "git-repo-info": "^2.1.1",
     "lint-staged": "^15.2.2",
     "micromark-util-symbol": "^2.0.0",
     "prettier": "^3.2.5",
     "prettier-plugin-astro": "^0.13.0",
+    "shelljs": "^0.8.5",
     "simple-git-hooks": "^2.11.1"
   },
   "simple-git-hooks": {

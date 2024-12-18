@@ -1,5 +1,5 @@
 ---
-title: 如何在 Gyoza 中使用图标？
+title: 如何在 Kizamu 中使用图标？
 date: 2024-05-08T10:54:27.000Z
 tags: [Icon]
 category: 教程
@@ -7,7 +7,7 @@ comments: true
 draft: false
 ---
 
-Gyoza 选择 font-class 的方式引用图标。这些图标大部分来源于 [Remix Icons](https://remixicon.com/)，并且在 [iconfont](https://www.iconfont.cn/) 上进行管理和导出。
+Kizamu 选择 font-class 的方式引用图标。这些图标大部分来源于 [Remix Icons](https://remixicon.com/)，并且在 [iconfont](https://www.iconfont.cn/) 上进行管理和导出。
 
 下图展示了项目中的所有图标：
 

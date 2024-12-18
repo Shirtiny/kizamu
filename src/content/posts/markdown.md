@@ -83,7 +83,7 @@ The blockquote element represents content that is quoted from another source, op
 
 ## 链接
 
-这是内部链接 [Gyoza 使用指南](/posts/guide)
+这是内部链接 [Kizamu 使用指南](/posts/guide)
 
 这是外部连接 [React **中文**文档](https://zh-hans.react.dev/)
 
