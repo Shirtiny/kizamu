@@ -2,13 +2,13 @@ import { themeAtom } from '@/store/theme'
 import { useAtom } from 'jotai'
 
 export function ThemeSwitch() {
-  const [theme, setTheme] = useAtom(themeAtom)
+  // const [theme, setTheme] = useAtom(themeAtom)
 
-  const left = { light: 4, system: 36, dark: 68 }[theme]
+  // const left = { light: 4, system: 36, dark: 68 }[theme]
 
   return (
     <div className="relative inline-block">
-      <div
+      {/* <div
         className="absolute -z-1 top-1 size-[32px] rounded-full bg-primary transition-transform shadow"
         style={{
           transform: `translateX(${left}px)`,
@@ -42,7 +42,7 @@ export function ThemeSwitch() {
         >
           <i className="iconfont icon-moon"></i>
         </button>
-      </div>
+      </div> */}
     </div>
   )
 }

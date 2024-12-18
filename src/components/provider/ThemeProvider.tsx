@@ -1,34 +1,25 @@
-import { useAtomValue } from 'jotai'
-import { useEffect } from 'react'
-import { getSystemTheme, changePageTheme, setLocalTheme } from '@/utils/theme'
-import { themeAtom } from '@/store/theme'
+import { useAtomValue } from 'jotai';
+import { useLayoutEffect } from 'react';
+import theme, { ColorThemes } from '@/utils/theme';
+import { themeAtom } from '@/store/theme';
 
 export function ThemeProvider() {
-  const theme = useAtomValue(themeAtom)
+  const curTheme = useAtomValue(themeAtom);
 
   function handlePrefersColorSchemeChange(event: MediaQueryListEvent) {
-    if (theme === 'system') {
-      changePageTheme(event.matches ? 'dark' : 'light')
-    }
+    theme.setTheme(event.matches ? ColorThemes.DARK : ColorThemes.LIGHT);
   }
 
-  useEffect(() => {
-    setLocalTheme(theme)
+  useLayoutEffect(() => {
+    theme.setTheme(curTheme);
 
-    if (theme === 'system') {
-      const systemTheme = getSystemTheme()
-      changePageTheme(systemTheme)
-    } else {
-      changePageTheme(theme)
-    }
-
-    const query = window.matchMedia('(prefers-color-scheme: dark)')
-    query.addEventListener('change', handlePrefersColorSchemeChange)
+    const query = window.matchMedia('(prefers-color-scheme: dark)');
+    query.addEventListener('change', handlePrefersColorSchemeChange);
 
     return () => {
-      query.removeEventListener('change', handlePrefersColorSchemeChange)
-    }
-  }, [theme])
+      query.removeEventListener('change', handlePrefersColorSchemeChange);
+    };
+  }, [curTheme]);
 
-  return null
+  return null;
 }

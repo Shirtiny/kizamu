@@ -1,4 +1,4 @@
-import { getLocalTheme } from '@/utils/theme'
-import { atom } from 'jotai'
+import theme from '@/utils/theme';
+import { atom } from 'jotai';
 
-export const themeAtom = atom(getLocalTheme())
+export const themeAtom = atom(theme.getTheme());
