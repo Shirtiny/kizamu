@@ -1,5 +1,5 @@
 import { site } from '@/config.json'
-import { AnimatePresence, motion } from 'framer-motion'
+import { AnimatePresence, motion } from 'motion/react'
 import { useHeaderMetaInfo, useShouldHeaderMetaShow } from './hooks'
 
 export function HeaderMeta() {

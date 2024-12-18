@@ -1,16 +1,16 @@
-import { useAtomValue } from 'jotai'
-import { pageScrollLocationAtom } from '@/store/scrollInfo'
-import { AnimatePresence, motion } from 'framer-motion'
+import { useAtomValue } from 'jotai';
+import { pageScrollLocationAtom } from '@/store/scrollInfo';
+import { AnimatePresence, motion } from 'motion/react';
 
 export function BackToTopFAB() {
-  const scrollY = useAtomValue(pageScrollLocationAtom)
-  const isShow = scrollY > 100
+  const scrollY = useAtomValue(pageScrollLocationAtom);
+  const isShow = scrollY > 100;
 
   return (
     <div className="fixed right-4 bottom-6 z-10">
       <AnimatePresence>{isShow && <BackToTop />}</AnimatePresence>
     </div>
-  )
+  );
 }
 
 function BackToTop() {
@@ -18,8 +18,8 @@ function BackToTop() {
     window.scrollTo({
       top: 0,
       behavior: 'smooth',
-    })
-  }
+    });
+  };
 
   return (
     <motion.button
@@ -33,5 +33,5 @@ function BackToTop() {
     >
       <i className="iconfont icon-rocket"></i>
     </motion.button>
-  )
+  );
 }

@@ -1,7 +1,7 @@
 import { modalStackAtom } from '@/store/modalStack'
 import { useSetAtom } from 'jotai'
 import * as Dialog from '@radix-ui/react-dialog'
-import { motion } from 'framer-motion'
+import { motion } from 'motion/react'
 import { CurrentModalContext } from './context'
 
 export function Modal({

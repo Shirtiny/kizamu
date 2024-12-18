@@ -1,5 +1,5 @@
 import { sponsor, site } from '@/config.json'
-import { motion } from 'framer-motion'
+import { motion } from 'motion/react'
 import * as QR from 'qrcode.react'
 import { useAtomValue } from 'jotai'
 import { metaSlugAtom, metaTitleAtom } from '@/store/metaInfo'

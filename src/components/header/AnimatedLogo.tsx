@@ -1,4 +1,4 @@
-import { AnimatePresence, motion } from 'framer-motion'
+import { AnimatePresence, motion } from 'motion/react'
 import { useShouldHeaderMetaShow, useIsMobile } from './hooks'
 import { author } from '@/config.json'
 

@@ -1,26 +1,26 @@
-import { motion } from 'framer-motion'
-import { useCurrentModal, useModal } from '@/components/ui/modal'
-import { useEffect, useState } from 'react'
-import { useDebounceValue } from '@/hooks/useDebounceValue'
+import { motion } from 'motion/react';
+import { useCurrentModal, useModal } from '@/components/ui/modal';
+import { useEffect, useState } from 'react';
+import { useDebounceValue } from '@/hooks/useDebounceValue';
 
-let pagefind: any = null
+let pagefind: any = null;
 async function loadPagefind() {
   if (import.meta.env.PROD && !pagefind) {
-    const url = '/pagefind/pagefind.js'
-    pagefind = await import(/* @vite-ignore */ url)
+    const url = '/pagefind/pagefind.js';
+    pagefind = await import(/* @vite-ignore */ url);
   }
 }
 
 export function SearchButton() {
-  const { present } = useModal()
+  const { present } = useModal();
 
   const openModal = () => {
     present({
       content: <SearchPanel />,
-    })
-  }
+    });
+  };
 
-  useSearchKeyboardEvents({ onOpen: openModal })
+  useSearchKeyboardEvents({ onOpen: openModal });
 
   return (
     <button
@@ -31,37 +31,37 @@ export function SearchButton() {
     >
       <i className="iconfont icon-search"></i>
     </button>
-  )
+  );
 }
 
 function SearchPanel() {
-  const [keyword, setKeyword] = useState('')
-  const [isLoading, setIsLoading] = useState(false)
-  const [results, setResults] = useState<any[]>([])
-  const debouncedKeyword = useDebounceValue(keyword, 350)
+  const [keyword, setKeyword] = useState('');
+  const [isLoading, setIsLoading] = useState(false);
+  const [results, setResults] = useState<any[]>([]);
+  const debouncedKeyword = useDebounceValue(keyword, 350);
 
-  const { dismiss } = useCurrentModal()
+  const { dismiss } = useCurrentModal();
 
   async function search(value: string) {
     if (!value) {
-      setResults([])
-      return
+      setResults([]);
+      return;
     }
-    setIsLoading(true)
-    await loadPagefind()
+    setIsLoading(true);
+    await loadPagefind();
     if (pagefind) {
-      const res = await pagefind.search(value)
-      const nextResults = await Promise.all(res.results.map((r: any) => r.data()))
-      setResults(nextResults)
+      const res = await pagefind.search(value);
+      const nextResults = await Promise.all(res.results.map((r: any) => r.data()));
+      setResults(nextResults);
     }
-    setIsLoading(false)
+    setIsLoading(false);
   }
 
   useEffect(() => {
-    search(debouncedKeyword)
-  }, [debouncedKeyword])
+    search(debouncedKeyword);
+  }, [debouncedKeyword]);
 
-  let resultList = null
+  let resultList = null;
   if (import.meta.env.DEV) {
     resultList = (
       <div className="h-full flex items-center justify-center">
@@ -78,7 +78,7 @@ function SearchPanel() {
           </div>
         </div>
       </div>
-    )
+    );
   } else if (isLoading) {
     resultList = (
       <div className="h-full flex items-center justify-center">
@@ -94,7 +94,7 @@ function SearchPanel() {
           />
         </svg>
       </div>
-    )
+    );
   } else if (keyword.length === 0) {
     resultList = (
       <div className="h-full flex items-center justify-center">
@@ -105,7 +105,7 @@ function SearchPanel() {
           />
         </svg>
       </div>
-    )
+    );
   } else if (results.length === 0) {
     resultList = (
       <div className="h-full flex items-center justify-center">
@@ -119,7 +119,7 @@ function SearchPanel() {
           <div>无内容</div>
         </div>
       </div>
-    )
+    );
   } else {
     resultList = (
       <>
@@ -135,10 +135,10 @@ function SearchPanel() {
               <div className="font-semibold">{item.meta.title}</div>
               <p className="text-sm" dangerouslySetInnerHTML={{ __html: item.excerpt }}></p>
             </a>
-          )
+          );
         })}
       </>
-    )
+    );
   }
 
   return (
@@ -169,22 +169,22 @@ function SearchPanel() {
         </a>
       </div>
     </motion.div>
-  )
+  );
 }
 
 function useSearchKeyboardEvents({ onOpen }: { onOpen: () => void }) {
   useEffect(() => {
     function handleKeyDown(event: KeyboardEvent) {
       if (event.key.toLowerCase() === 'k' && (event.metaKey || event.ctrlKey)) {
-        event.preventDefault()
-        onOpen()
+        event.preventDefault();
+        onOpen();
       }
     }
 
-    window.addEventListener('keydown', handleKeyDown)
+    window.addEventListener('keydown', handleKeyDown);
 
     return () => {
-      window.removeEventListener('keydown', handleKeyDown)
-    }
-  }, [onOpen])
+      window.removeEventListener('keydown', handleKeyDown);
+    };
+  }, [onOpen]);
 }

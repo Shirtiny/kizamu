@@ -1,7 +1,7 @@
 import { useAtomValue } from 'jotai'
 import { Modal } from './Modal'
 import { modalStackAtom } from '@/store/modalStack'
-import { AnimatePresence } from 'framer-motion'
+import { AnimatePresence } from 'motion/react'
 
 export function ModalStack() {
   const modalStack = useAtomValue(modalStackAtom)
