@@ -1,7 +1,7 @@
 {
   "name": "astro-kizamu",
   "type": "module",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "scripts": {
     "prepare": "node ./.scripts/init.cjs",
     "dev": "astro dev",
